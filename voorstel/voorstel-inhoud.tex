@@ -142,17 +142,26 @@ geschiktheid van Python, JavaScript en Java voor webscraping-taken.
 De verwachte resultaten van dit onderzoek worden gedefinieerd door meetbare uitkomsten voortkomend uit zowel de literatuurstudie 
 als de Proof of Concept (PoC)-fase. Deze resultaten zullen concreet worden weergegeven in vergelijkende grafieken, waarbij de 
 programmeertalen Python, JavaScript en Java worden geëvalueerd op basis van verschillende webscraping-scenario's. 
-De assen van deze grafieken vertegenwoordigen de programmeertalen (As 1) en metingen zoals uitvoeringstijd en geheugengebruik. (As 2)
+De assen van deze grafieken vertegenwoordigen de programmeertalen (x-as) en metingen zoals uitvoeringstijd en geheugengebruik. (y-as)
+\\
+\\
 \begin{tikzpicture}
-\begin{axis}
-[
-  titel = Example Bar Graph,
+\begin{axis}[
+  title=Uitvoeringstijd (min),
   ybar,
-  nodes near coords, bar width=0.2cm,
+  nodes near coords,
+  bar width=0.2cm,
   symbolic x coords={Java,Python,Javascript},
   enlarge x limits=.2,
-  ]
-\addplot coordinates{(Java, 10) (Python, 12) (Javascript, 8)};
+  xticklabels={Java,Python,JavaScript},
+]
+
+\addplot coordinates {
+  (Java,10)
+  (Python,12)
+  (Javascript,9)
+};
+
 \end{axis}
 \end{tikzpicture}
   
