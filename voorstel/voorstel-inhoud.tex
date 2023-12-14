@@ -56,7 +56,9 @@ Selenium is een automatiseringstool waarmee webscraping van dynamische webpagina
 waar de inhoud wordt gegenereerd door JavaScript. Selenium simuleert menselijke interactie met een webpagina en is geschikt voor het ophalen van gegevens die via JavaScript worden geladen.
 
 \subsubsection{Machine Learning-based webscraping}
-Geavanceerde technieken, zoals machine learning, kunnen worden toegepast om webscraping-modellen te trainen voor het herkennen 
+Geavanceerde technieken, zoals 
+
+machine learning, kunnen worden toegepast om webscraping-modellen te trainen voor het herkennen 
 van patronen en het extraheren van specifieke informatie. Het grote voordeel dat webscrapen met Machine Learning met zich meebrengt
 is dat het flexibel is en zich makkelijker kan aanpassen aan veranderende webpaginastructuren.
 
@@ -76,7 +78,19 @@ Python staat bekend als een van de meest populaire programmeertalen voor webscra
 een overvloed aan beschikbare libraries zoals Beautiful Soup en Scrapy~\autocite{Saabith2019}. De eenvoudige en leesbare syntax van Python maakt het 
 gemakkelijk voor zowel beginners als ervaren ontwikkelaars om webscraping-scripts te schrijven.
 
-\subsubsection{}
+\subsubsection{Javascript}
+Javascript, als de dominante programmeertaal op het web, vindt breed gebruik in zowel client-side als server-side webscraping~\autocite{Raval2023}.
+Met bibliotheken zoals Puppeteer wordt client-side scraping mogelijk door automatisering van browsers, terwijl Node.js 
+op de server-side kan worden ingezet voor effectieve webscraping. Naast webscraping wordt JavaScript veelvuldig toegepast in 
+frontend-ontwikkeling, waardoor het naadloos integreert met webpagina's. Dit maakt het bijzonder geschikt voor taken waar interactie
+met de webpagina en het manipuleren van de DOM-structuur vereist is.
+
+\subsubsection{Java}
+Java staat bekend om zijn robuustheid en betrouwbaarheid, waardoor het een geschikte keuze is voor grootschalige en 
+complexe webscraping-projecten. Java is in veel gevallen ook sneller dan Python en Javascript omdat het gecompiled wordt naar
+native code in tegenstelling tot Python en Javascript die interpreted languages zijn~\autocite{Chukwuebuka2023}. Java heeft wel een stijlere leer curve
+dan de andere 2 talen. Java biedt dan wel krachtige ondersteuning voor multithreading wat essentieel is voor het parallel
+verwerken van webscraping-taken. Deze mogelijkheid draagt bij aan een grote schaalbaarheid voor de webscraping projecten.
 
 % Voor literatuurverwijzingen zijn er twee belangrijke commando's:
 % \autocite{KEY} => (Auteur, jaartal) Gebruik dit als de naam van de auteur
@@ -89,18 +103,36 @@ gemakkelijk voor zowel beginners als ervaren ontwikkelaars om webscraping-script
 %---------- Methodologie ------------------------------------------------------
 \section{Methodologie}%
 \label{sec:methodologie}
+Het onderzoek is verdeeld in verscheidene fasen om een correcte en grondige evaluatie te kunnen maken van de verschillende talen
+en libraries voor het webscrapen. Er wordt bij iedere fase gefocused op een specifiek doel en draagt bij aan het bepalen welke
+programmeertaal het meest geschikt is voor webscrapen.
 
-Hier beschrijf je hoe je van plan bent het onderzoek te voeren. Welke onderzoekstechniek ga je toepassen om elk van je onderzoeksvragen te beantwoorden? Gebruik je hiervoor literatuurstudie, interviews met belanghebbenden (bv.~voor requirements-analyse), experimenten, simulaties, vergelijkende studie, risico-analyse, PoC, \ldots?
+\subsection{Fase 1: Literatuurstudie (3 weken)}
+De initiële fase van dit onderzoek richt zich op een grondige literatuurstudie om inzicht te krijgen in bestaande webscraping-tools in Python,
+JavaScript en Java. Het onderzoek omvat een gedetailleerde analyse van beschikbare libraries en frameworks, 
+waarbij functionaliteiten, gebruiksgemak en efficiëntie worden onderzocht. Deze literaire verkenning legt de 
+basis voor het identificeren van geschikte tools voor webscraping in de verdere stadia van het onderzoek.
 
-Valt je onderwerp onder één van de typische soorten bachelorproeven die besproken zijn in de lessen Research Methods (bv.\ vergelijkende studie of risico-analyse)? Zorg er dan ook voor dat we duidelijk de verschillende stappen terug vinden die we verwachten in dit soort onderzoek!
+\subsection{Fase 2: Long list (2 weken)}
+Na de literatuurstudie wordt een uitgebreide lijst samengesteld met diverse webscraping-tools voor elke programmeertaal. 
+Op basis van de literatuurstudie wordt bepaald welke items op deze long list komen en welke niet. Belangrijke kenmerken van elke tool 
+worden zorgvuldig gedocumenteerd. Deze Long List fungeert als een uitgangspunt voor het selectieproces in de volgende fase 
+van het onderzoek.
 
-Vermijd onderzoekstechnieken die geen objectieve, meetbare resultaten kunnen opleveren. Enquêtes, bijvoorbeeld, zijn voor een bachelorproef informatica meestal \textbf{niet geschikt}. De antwoorden zijn eerder meningen dan feiten en in de praktijk blijkt het ook bijzonder moeilijk om voldoende respondenten te vinden. Studenten die een enquête willen voeren, hebben meestal ook geen goede definitie van de populatie, waardoor ook niet kan aangetoond worden dat eventuele resultaten representatief zijn.
+\subsection{Fase 3: Short list (2 weken)}
+De selectie van de meest belovende tools vindt plaats in de Short List-fase. De tools op de Long List worden beoordeeld op 
+criteria zoals relevantie, gemeenschapsondersteuning en functionaliteit. 
+De gekozen tools worden gedocumenteerd als de focus van verdere evaluatie, terwijl minder geschikte opties 
+worden uitgesloten.
 
-Uit dit onderdeel moet duidelijk naar voor komen dat je bachelorproef ook technisch voldoen\-de diepgang zal bevatten. Het zou niet kloppen als een bachelorproef informatica ook door bv.\ een student marketing zou kunnen uitgevoerd worden.
+\subsection{Fase 4: Proof of Concept (5 weken)}
+De Proof of Concept fase omvat de ontwikkeling van webscrapers in de geselecteerde tools voor elk van de drie programmeertalen. 
+Deze implementatie is gericht op het evalueren van de efficiëntie, schaalbaarheid en praktische toepasbaarheid van elke tool. 
+Representatieve webscraping-scenario's worden geïdentificeerd en de ontwikkelde PoC's worden onderworpen aan metingen van 
+uitvoeringstijd, geheugengebruik en schaalbaarheid. De codecomplexiteit en praktische bruikbaarheid van elke tool worden 
+nauwkeurig beoordeeld.
 
-Je beschrijft ook al welke tools (hardware, software, diensten, \ldots) je denkt hiervoor te gebruiken of te ontwikkelen.
-
-Probeer ook een tijdschatting te maken. Hoe lang zal je met elke fase van je onderzoek bezig zijn en wat zijn de concrete \emph{deliverables} in elke fase?
+\subsection{Conclusie (1 week)}
 
 %---------- Verwachte resultaten ----------------------------------------------
 \section{Verwacht resultaat, conclusie}%
