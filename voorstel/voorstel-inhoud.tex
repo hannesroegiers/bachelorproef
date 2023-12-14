@@ -133,14 +133,31 @@ uitvoeringstijd, geheugengebruik en schaalbaarheid. De codecomplexiteit en prakt
 nauwkeurig beoordeeld.
 
 \subsection{Conclusie (1 week)}
-
+De afsluitende fase van het onderzoek omvat de analyse van bevindingen uit zowel de literatuurstudie als de PoC-fase. 
+Resultaten van de vergelijkende metingen tussen programmeertalen worden geëvalueerd, en conclusies worden geformuleerd over de 
+geschiktheid van Python, JavaScript en Java voor webscraping-taken.
 %---------- Verwachte resultaten ----------------------------------------------
 \section{Verwacht resultaat, conclusie}%
 \label{sec:verwachte_resultaten}
+De verwachte resultaten van dit onderzoek worden gedefinieerd door meetbare uitkomsten voortkomend uit zowel de literatuurstudie 
+als de Proof of Concept (PoC)-fase. Deze resultaten zullen concreet worden weergegeven in vergelijkende grafieken, waarbij de 
+programmeertalen Python, JavaScript en Java worden geëvalueerd op basis van verschillende webscraping-scenario's. 
+De assen van deze grafieken vertegenwoordigen de programmeertalen (As 1) en metingen zoals uitvoeringstijd en geheugengebruik. (As 2)
+\begin{tikzpicture}
+\begin{axis}
+[
+  titel = Example Bar Graph,
+  ybar,
+  nodes near coords, bar width=0.2cm,
+  symbolic x coords={Java,Python,Javascript},
+  enlarge x limits=.2,
+  ]
+\addplot coordinates{(Java, 10) (Python, 12) (Javascript, 8)};
+\end{axis}
+\end{tikzpicture}
+  
+Een aanvullend aspect van de verwachte resultaten omvat de beoordeling van codecomplexiteit en praktische bruikbaarheid in webscraping
+-implementaties voor elke taal.
 
-Hier beschrijf je welke resultaten je verwacht. Als je metingen en simulaties uitvoert, kan je hier al mock-ups maken van de grafieken samen met de verwachte conclusies. Benoem zeker al je assen en de onderdelen van de grafiek die je gaat gebruiken. Dit zorgt ervoor dat je concreet weet welk soort data je moet verzamelen en hoe je die moet meten.
-
-Wat heeft de doelgroep van je onderzoek aan het resultaat? Op welke manier zorgt jouw bachelorproef voor een meerwaarde?
-
-Hier beschrijf je wat je verwacht uit je onderzoek, met de motivatie waarom. Het is \textbf{niet} erg indien uit je onderzoek andere resultaten en conclusies vloeien dan dat je hier beschrijft: het is dan juist interessant om te onderzoeken waarom jouw hypothesen niet overeenkomen met de resultaten.
-
+De meerwaarde van dit onderzoek voor de doelgroep ligt in de mogelijkheid om optimalere technologische keuzes te maken. 
+Door inzicht te verschaffen in de prestaties van Python, JavaScript en Java, biedt dit onderzoek een waardevolle leidraad. 
