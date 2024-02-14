@@ -19,7 +19,7 @@
 \academicyear{2023-2024} % TODO: pas het academiejaar aan
 
 % TODO: Werktitel
-\title{Vergelijkende studie van programmeertalen voor webscraping: Python, JavaScript en Java}
+\title{Web Scraping via Netwerkverkeersanalyse: Een alternatieve methode voor data-extractie}
 
 \author{Hannes Roegiers}
 \email{hannes.roegiers@student.hogent.be}
@@ -29,27 +29,22 @@
 \supervisor[Co-promotor]{}
 
 \specialisation{AI \& Data Engineering}
-\keywords{Webscraping, Java, python, Javascript}
+\keywords{Webscraping, Netwerkverkeersanalyse, JSON, data-extractie, efficiëntie, flexibiliteit, schaalbaarheid, ethiek}
 
 \begin{document}
 
 \begin{abstract}
-  Dit onderzoek presenteert een vergelijkende studie van programmeertalen voor webscraping, met een focus op Python, JavaScript, en Java. 
-  We verkennen de mogelijkheden en geschikheid van deze talen en analyseren de beschikbare libraries en frameworks van elke taal 
-  die ondersteuning bieden bij het uitvoeren van webscraping-taken. 
-  De motivatie voor dit onderzoek ligt in de groeiende relevantie van webscraping in verschillende domeinen en de noodzaak om de meest 
-  geschikte taal te identificeren voor deze specifieke taak.
-  In de eerste fase van de bachelorproef zal een literatuurstudie worden uitgevoerd. Hierbij worden de beschikbare libraries en frameworks van elke
-  taal onderzocht en hun functinaliteiten in het kader webscraping geanalyseerd.
-  In de tweede fase van het onderzoek er Proof of Concepts (POC) gemaakt worden voor iedere taal. Deze Proof of Concepts bestaan
-  uit een aantal webscrapers per taal, waarbij de nadruk voornamelijk ligt op efficiëntie door de uitvoeringstijd en geheugengebruik 
-  bij te houden. Er wordt ook rekening gehouden met de schaalbaarheid van de webscraper en de complexiteit van de code.
-  Het verwachte resultaat van deze bachelorproef is een dieper begrip van de geschikheid van verschillende programmeertalen en bijhorende
-  libraries voor het implementeren van webscrapers. 
-  De conclusies zullen niet enkel gebaseerd zijn op de technische mogelijkheden
-  van iedere taal, maar ook op de praktische toepasbaarheid en efficiëntie in real-world webscraping scenario's. De resultaten van 
-  dit onderzoek dragen bij het informeren van data-engineers en organisaties bij het maken van hun keuzes bij het selecteren van 
-  de juiste technologie voor hun webscraping projecten.
+  Dit onderzoeksvoorstel richt zich op het verkennen van de mogelijkheden voor het webscrapen van netwerkverkeer op websites en bijkomende ethische aspecten. Meer specifiek wordt de focus gelegd
+  op het extraheren van JSON-objecten uit het netwerkverkeer aangezien deze de data bevatten. De traditionele webscraping methode laadt de webpagina's in de browser en parst de HTML-code om zo
+  te trachten de gewenste data te vinden en op te slaan. Bij webscrapen van het netwerkverkeer wordt vooral het inkomend netwerkverkeer geanalyseerd, maar in sommige gevallen ook het uitgaand verkeer.
+  Wanneer een JSON bestand gevonden wordt, wordt deze volledig opgeslaan om dan in een latere fase van de data-extractie er de gewenste data uit te halen. Dit kan gedaan worden aan de hand van proxyservers, API, 
+  python libraries of handmatig met de browserontwikkelaarstools. Wanneer men bezig is met webscraping is het belangerijk om voldoende aandacht te besteden aan het ethisch tewerk gaan. Dit onderzoek belicht ook de ethische aspecten
+  van webscraping via netwerkverkeersanalyse, met aandacht voor privacy, gegevensbescherming en intellectueel eigendom.
+  Het uitvoeren van dit onderzoek vereist ook een Proof of Concept (PoC) om de haalbaarheid en effectiviteit van deze methodes te demonstreren en te evalueren.
+  De eerste fase van dit onderzoek bestaat uit een uitgebreide literatuurstudie waarin onderzocht wordt welke webscraping tools ondersteuning bieden voor het analyseren en scrapen van het netwerkverkeer van websites.
+  In de tweede fase wordt er gefocusd op het opzetten van een Proof of Concept (PoC) voor de geselecteerde tools. Dit onderzoek beoogt een diepgaand begrip te ontwikkelen van de bruikbaarheid van de
+  beschikbare tools en netwerkverkeersanalyse methodes voor webscraping en concrete ethische richtlijnen te formuleren voor het toepassen van deze methoden. Deze paper is relevant voor onderzoekers en professionals die zich interesseren voor webscraping, data-extractie, netwerkverkeersanalyse
+
 \end{abstract}
 
 \tableofcontents
