@@ -40,73 +40,28 @@ met aandacht voor privacy, gegevensbescherming en intellectueel eigendom.
 
 \section{Literatuurstudie}
 \label{sec:Literatuurstudie}
-
-De literatuurstudie verkent het domein van webscraping, met specifieke aandacht voor de programmeertalen Python, Javascript en Java,
-evenals de verschillende libraries voor deze talen die essentieel zijn voor webscraping scripts.
-Deze studie onderzoekt de huidige stand van zaken, richt zich op diverse libraries en identificeert open vragen. 
-Deze verkenning vormt de kern van de aankomende vergelijkende studie van programmeertalen en libraries in deze bachelorproef.
+In de digitale wereld van vandaag is data de sleutel tot succes. Bedrijven verzamelen en analyseren data om hun klanten beter te begrijpen, 
+hun marketingstrategieën te optimaliseren, en hun concurrentiepositie te versterken. Deze enorme vraag naar kwalitatieve data drijft de ontwikkeling 
+van nieuwe en innovatieve methodes voor dataverzameling. Er zijn vele manieren waarop er aan dataverzameling kan gedaan worden, deze studie focussed
+zich op webscraping.
 
 \subsection{Webscraping}
+\label{sec:Webscraping}
+Webscraping is een techniek die automatisch data extraheert van websites. Deze data kan in verschillende formaten
+voorkomen, zoals HTML, JSON, XML en CSV. Webscraping heeft tal van toepassingen, waaronder:
+\begin{itemize}
+  \item Data-extractie is het verzamelen van data van websites voor diverse doeleinden, 
+      zoals marktonderzoek,prijsvergelijking en het verzamelen van recensies
+  \item Het automatiseren van taken die anders handmatig zouden moeten worden uitgevoerd, denk maar 
+  aan het invullen van bepaalde formuliers, aanmaken van documenten en downloaden van bestanden
+  \item Monitoren van websites voor veranderingen van prijzen, nieuwe producten of statusen van bepaalde zaken
+\end{itemize}
 
-\textit{Webscraping}, verwijst naar het automatisch extraheren van informatie en gegevens van websites en deze dan op te slaan in 
-in een database of spreadsheet.
-Er bestaan een hele hoop webscraping technieken waaronder manuele copy-and paste, matchen van reguliere expressies, HTTP programming
-,HTML parsing, DOM parsing, vertical aggregation, webscraping software, semantic notation en computer vision web-page analyserse
-\autocite{DeSSirisuriya2015}.
-
-\subsubsection{HTML Parsing}
-HTML Parsing houdt in dat de structuur van de HTML documenten wordt geanalyseerd om er specifieke gegevens uit te halen.
-Deze techniek werkt het best bij een goed gestructureerde webpagina en maakt gebruik van tags en attributen om de gewenste informatie
-te vinden.
-
-\subsubsection{Reguliere exppressies}
-Reguliere expressies of regex zijn patronen die gebruikt worden om tekst te matchen op basis van specifieke criteria.
-Deze zijn handig voor het zoeken en vinden van informatie met een consistente structuur, zoals telefoonnummers en e-mailadressen.
-
-\subsubsection{API-based webscraping}
-Sommige websites bieden Application Programming Interfaces (API's) waarmee gegevens gestructureerd kunnen worden opgevraagd. 
-Deze kunnen dus ook gebruikt worden om te webscrapen.
-
-\subsubsection{Selenium}
-Selenium is een automatiseringstool waarmee webscraping van dynamische webpagina's mogelijk is, 
-waar de inhoud wordt gegenereerd door JavaScript. Selenium simuleert menselijke interactie met een webpagina en is geschikt voor het ophalen van gegevens die via JavaScript worden geladen.
-
-\subsubsection{Machine Learning-based webscraping}
-Geavanceerde technieken, zoals 
-
-machine learning, kunnen worden toegepast om webscraping-modellen te trainen voor het herkennen 
-van patronen en het extraheren van specifieke informatie. Het grote voordeel dat webscrapen met Machine Learning met zich meebrengt
-is dat het flexibel is en zich makkelijker kan aanpassen aan veranderende webpaginastructuren.
-
-\subsubsection*{}
-De keuze van de juiste techniek hangt af van een aantal factoren, waaronder de complexiteit van de webpagina's 
-die moeten worden gescraped, de hoeveelheid gegevens die moeten worden geëxtraheerd en de beschikbare middelen.
-
-\subsection{Programmeertalen}
-De vergelijking van programmeertalen voor webscraping vormt de kern van deze bachelorproef. 
-Door de specifieke kenmerken en mogelijkheden van Python, JavaScript en Java te onderzoeken, 
-streven we ernaar inzicht te verkrijgen in welke taal het meest geschikt is voor verschillende webscraping-taken. 
-Elk van deze programmeertalen heeft zijn eigen ecosysteem van libraries, frameworks en tools die kunnen worden toegepast 
-bij het ontwikkelen van webscrapers.
-
-\subsubsection{Python}
-Python staat bekend als een van de meest populaire programmeertalen voor webscraping. Het heeft een uitgebreide gemeenschap en
-een overvloed aan beschikbare libraries zoals Beautiful Soup en Scrapy~\autocite{Saabith2019}. De eenvoudige en leesbare syntax van Python maakt het 
-gemakkelijk voor zowel beginners als ervaren ontwikkelaars om webscraping-scripts te schrijven.
-
-\subsubsection{Javascript}
-Javascript, als de dominante programmeertaal op het web, vindt breed gebruik in zowel client-side als server-side webscraping~\autocite{Raval2023}.
-Met bibliotheken zoals Puppeteer wordt client-side scraping mogelijk door automatisering van browsers, terwijl Node.js 
-op de server-side kan worden ingezet voor effectieve webscraping. Naast webscraping wordt JavaScript veelvuldig toegepast in 
-frontend-ontwikkeling, waardoor het naadloos integreert met webpagina's. Dit maakt het bijzonder geschikt voor taken waar interactie
-met de webpagina en het manipuleren van de DOM-structuur vereist is.
-
-\subsubsection{Java}
-Java staat bekend om zijn robuustheid en betrouwbaarheid, waardoor het een geschikte keuze is voor grootschalige en 
-complexe webscraping-projecten. Java is in veel gevallen ook sneller dan Python en Javascript omdat het gecompiled wordt naar
-native code in tegenstelling tot Python en Javascript die interpreted languages zijn~\autocite{Chukwuebuka2023}. Java heeft wel een stijlere leer curve
-dan de andere 2 talen. Java biedt dan wel krachtige ondersteuning voor multithreading wat essentieel is voor het parallel
-verwerken van webscraping-taken. Deze mogelijkheid draagt bij aan een grote schaalbaarheid voor de webscraping projecten.
+De traditionele webscrapingmethodes baseren zich op het parsen van de HTML-code van webpaginas.
+Dit kan gedaan worden met behulp van diverse tools, voornamelijk python libraries, zoals BeautifulSoup, Srapy en Selenium.
+In JavaScript heb je dan weer Cheerio en Puppeteer en in Java heb je Jsoup. De voordelen van deze methodes zijn
+dat ze eenvoudig zijn aangezien iedere website HTML gebruikt en het dus relatief eenvoudig is om dit te implementeren.
+De nadelen van hiervan 
 
 % Voor literatuurverwijzingen zijn er twee belangrijke commando's:
 % \autocite{KEY} => (Auteur, jaartal) Gebruik dit als de naam van de auteur
