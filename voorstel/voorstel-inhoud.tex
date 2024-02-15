@@ -5,7 +5,7 @@
 
 In een tijd waarin data als het digitale goud beschouwd wordt, groeit de relevantie van webscraping exponentieel.
 Webscraping, een techniek gericht op het geautomatiseerd onttrekken van data van websites, komt voort uit de toenemende 
-erkenning van data als drijvende kracht achter zakelijke strategieën, wetenschappelijk onderzoek en artificiële intelligentie~\autocite{Oeztuerk2023}.
+erkenning van data als drijvende kracht achter zakelijke strategieën, wetenschappelijk onderzoek en artificiële intelligentie~\autocite{RizaOeztuerk2023}.
 
 Bedrijven en organisaties zijn zich steeds meer bewust van de waarde van accurate, actuele data om competitief te blijven
 en te anticiperen op veranderende marktomstandigheden. In deze tijd van datagestuurde besluitvorming werkt webscraping als
@@ -57,12 +57,54 @@ voorkomen, zoals HTML, JSON, XML en CSV. Webscraping heeft tal van toepassingen,
   \item Monitoren van websites voor veranderingen van prijzen, nieuwe producten of statusen van bepaalde zaken
 \end{itemize}
 
-De traditionele webscrapingmethodes baseren zich op het parsen van de HTML-code van webpaginas.
+\subsubsection{Traditionele Methodes}
+\label{sec:Traditionele Methodes}
+De traditionele webscrapingmethodes baseren zich op het parsen van de HTML-code van webpaginas \autocite{DeSSirisuriya2015}.
 Dit kan gedaan worden met behulp van diverse tools, voornamelijk python libraries, zoals BeautifulSoup, Srapy en Selenium.
 In JavaScript heb je dan weer Cheerio en Puppeteer en in Java heb je Jsoup. De voordelen van deze methodes zijn
-dat ze eenvoudig zijn aangezien iedere website HTML gebruikt en het dus relatief eenvoudig is om dit te implementeren.
-De nadelen van hiervan 
+dat ze eenvoudig zijn aangezien iedere website HTML gebruikt en het dus relatief eenvoudig is om dit te implementeren is. 2 verschillende webscrapers voor 
+verschillende websites gaan dus vaak veel gelijkenissen hebben. Voor mensen die vaak aan webscraping doen is het dus makkelijk hier een soort template voor te creëren.
+De eenvoudigheid komt echter niet zonder kost aan prestaties. De HTML code grote websites bevat heel veel informatie over de opbouw van de website en de website structuur, dit 
+is meestal niet de informatie waar men naar op zoek is bij het webscrapen. Al deze code moet eerst geparsd worden om dan eigenlijk maar een klein deeltje van deze geparste code 
+op te slaan of bij te houden. Zeker bij grotere websites vergt dit enorm veel rekenkracht, dit resulteert in inefficiënte data-extractie en toont aan dat de traditionele webscraping methodes
+vaak schaalbaarheid problemen met zich mee brengen.
+\\
+\\
+Deze methodes zijn niet flexibel omdat deze scrapers vertrouwen op een bepaald HTML-code structuur. Dit wil zeggen dat een scraper die een website meerdere malen wilt scrapen,
+onderhouden moet worden want wanneer een website geupdate wordt bestaat er een grote kans dat de webscraper niet meer werkt omdat de HTML-code is aangepast. Als de HTML tag
+die de gewenste data bevat, verplaatst is, is de kans groot dat de scraper de tag en dus ook de data niet meer terug vind. De data die kan terug gevonden worden in de HTML-code
+is data die zichtbaar is. Websites implementeren vaker anti-scrapingmaatregelen om te weren tegen ongewenst dataverkeer. Traditionele methoden zijn hierdoor gevoelig voor blokkeringen
+en kunnen inconsistente of onvolledige data opleveren \autocite{Sandeep2022}. Een aantal van deze anti-scraping methodes zijn IP-based rate limiting, dat is wanneer de webpagina maar een aantal requests per IP-andres 
+toelaat. Ook de wel gekende Google reCAPTCHA is een effectieve manier om dit soort scrapen tegen te gaan. Er bestaan een aantal anti-scraping services zoals Cloudflare en Akamai, deze bevatten
+een veiligheids features, rate limiting, en bescherming tegen distributed denial-of-service (DDoS) aanvallen.
 
+\subsubsection{Netwerkverkeersanalyse}
+\label{sec:Netwerkverkeersanalyse}
+Netwerkverkeersanalyse, ook wel packet capture of network sniffing genoemd, is een techniek die het netwerkverkeer tussen een browser en een website analyseert om data te extraheren \autocite{Robles2020}. 
+In tegenstelling tot traditionele webscrapingmethoden die de HTML-code van webpagina's parsen, richt deze methode zich op de data die wordt uitgewisseld tussen de client en de server.
+Het analyseren van netwerkverkeer is efficiënter dan het parsen van HTML-code. De data die via netwerkverkeersanalyse wordt geëxtraheerd is vaak al gestructureerd en geformatteerd, 
+waardoor het eenvoudiger te verwerken is. Deze methode is in tegenstelling tot de traditionele manier veel flexibeler omdat er niet naar de HTML-code wordt gekeken maar wel naar het verkeer
+en dus de data die verstuurd wordt. Dit wil zeggen dat de scrapers nog steeds zullen werken ook als de website geupdate wordt. Websites implementeren steeds vaker anti-scrapingmaatregelen om 
+te voorkomen dat hun data wordt gescraped. Netwerkverkeersanalyse is minder gevoelig voor deze maatregelen, omdat het de data extraheert voordat deze door de website wordt gerendered.
+De analyse van netwerkverkeer is is complexer dan de traditionele webscrapingmethodes. Het vereist meer technische kennis om de data te onderscheppen,te interpreteren en te verwerken. Soms 
+versleutelen websites hun netwerkverkeer, waardoor het moeilijker of zelfs onmogelijk is om data te extraheren. Een aantal tools die hiervoor kan gebruikt worden is Wireshark, dit is een
+opensource tool met een breed scala aan funties voor het vastleggen van allerlei soorten netwerkverkeer. Ook de python libraries 'scapy' en 'mitmproxy' bieden krachtige tools voor het analyseren
+en manipuleren van netwerkverkeer.
+
+\subsection{Ethische Aspecten}
+\label{sec:Ethische Aspecten}
+Webscraping, het automatisch extraheren van data van websites, roept een aantal ethische vragen op. Deze vragen zijn complex en er is geen eenvoudig antwoord. De ethische aspecten van webscraping
+hangen af van verschillende factoren:
+
+\begin{itemize}
+  \item Is het doel van de dataverzameling legitiem? Is de dataverzameling noodzakelijk?
+  \item Heeft de webscraper toegang tot de data? Is het openbare data of is de data beschermd door auteursrecht of privacywetgeving?
+  \item Verstoort de webscraper de werking van de website of bregt deze de website-eigenaar financiële schade toe? 
+  \item Wordt de data anoniem geanalyseerd in geval deze persoonlijk of gevoelig is?
+\end{itemize}
+
+Webscraping kan een waardevolle tool zijn voor dataverzameling. Het is echter belangrijk om de ethische aspecten van webscraping in overweging te nemen. Webscrapers moeten zich houden
+ aan ethische principes en richtlijnen om de privacy van individuen te respecteren, schade te vermijden en transparant te zijn over hun dataverzameling \autocite{Chiauzzi2019}.
 % Voor literatuurverwijzingen zijn er twee belangrijke commando's:
 % \autocite{KEY} => (Auteur, jaartal) Gebruik dit als de naam van de auteur
 %   geen onderdeel is van de zin.
@@ -74,18 +116,16 @@ De nadelen van hiervan
 %---------- Methodologie ------------------------------------------------------
 \section{Methodologie}%
 \label{sec:methodologie}
-Het onderzoek is verdeeld in verscheidene fasen om een correcte en grondige evaluatie te kunnen maken van de verschillende talen
-en libraries voor het webscrapen. Er wordt bij iedere fase gefocused op een specifiek doel en draagt bij aan het bepalen welke
-programmeertaal het meest geschikt is voor webscrapen.
-
+Het onderzoek is verdeeld in verscheidene fasen om een correcte en grondige evaluatie te kunnen maken van de beschikbare netwerkverkeersanalyse methodes.
+Er wordt bij iedere fase gefocust op een specifiek doel en draagt bij aan het bepalen welke netwerkverkeersanalyse methodes het beste werken.
 \subsection{Fase 1: Literatuurstudie (3 weken)}
-De initiële fase van dit onderzoek richt zich op een grondige literatuurstudie om inzicht te krijgen in bestaande webscraping-tools in Python,
-JavaScript en Java. Het onderzoek omvat een gedetailleerde analyse van beschikbare libraries en frameworks, 
+De initiële fase van dit onderzoek richt zich op een grondige literatuurstudie om inzicht te krijgen in bestaande netwerkverkeersanalyse tools en python libraries.
+Het onderzoek omvat een gedetailleerde analyse van beschikbare libraries en frameworks, 
 waarbij functionaliteiten, gebruiksgemak en efficiëntie worden onderzocht. Deze literaire verkenning legt de 
 basis voor het identificeren van geschikte tools voor webscraping in de verdere stadia van het onderzoek.
 
 \subsection{Fase 2: Long list (2 weken)}
-Na de literatuurstudie wordt een uitgebreide lijst samengesteld met diverse webscraping-tools voor elke programmeertaal. 
+Na de literatuurstudie wordt een uitgebreide lijst samengesteld met diverse webscraping-tools om het netwerverkeer te analyseren en scrapen. 
 Op basis van de literatuurstudie wordt bepaald welke items op deze long list komen en welke niet. Belangrijke kenmerken van elke tool 
 worden zorgvuldig gedocumenteerd. Deze Long List fungeert als een uitgangspunt voor het selectieproces in de volgende fase 
 van het onderzoek.
@@ -97,47 +137,22 @@ De gekozen tools worden gedocumenteerd als de focus van verdere evaluatie, terwi
 worden uitgesloten.
 
 \subsection{Fase 4: Proof of Concept (5 weken)}
-De Proof of Concept fase omvat de ontwikkeling van webscrapers in de geselecteerde tools voor elk van de drie programmeertalen. 
-Deze implementatie is gericht op het evalueren van de efficiëntie, schaalbaarheid en praktische toepasbaarheid van elke tool. 
-Representatieve webscraping-scenario's worden geïdentificeerd en de ontwikkelde PoC's worden onderworpen aan metingen van 
-uitvoeringstijd, geheugengebruik en schaalbaarheid. De codecomplexiteit en praktische bruikbaarheid van elke tool worden 
-nauwkeurig beoordeeld.
-
+De Proof of Concept fase omvat de ontwikkeling van 2 webscrapers. 1 Webscraper zal de traditionele manier gebruiken, het scrapen van de HTML-code, om zo 
+de limitaties hiervan aan te tonen. Dit zal in de python programmeertaal gebeuren, gebruik makende van de libraries:
+\begin{itemize}
+  \item requests
+  \item BeautifulSoup
+  \item Scrapy
+\end{itemize}
+ De andere webscraper zal gebruik maken van netwerkverkeersanalyse om dezelfde website(s) te scrapen. Bij deze zal Wireshark gebruikt worden om het netwerkverkeer
+ te verkennen en het eventuele gebruik van API's te ontdekken, analyseren in welk formaat data verzonden wordt over het netwerk. De uitwerking van de 
+ scraper zal bepaald worden door de resultaten van verkenning van het netwerkverkeer.
 \subsection{Conclusie (1 week)}
 De afsluitende fase van het onderzoek omvat de analyse van bevindingen uit zowel de literatuurstudie als de PoC-fase. 
-Resultaten van de vergelijkende metingen tussen programmeertalen worden geëvalueerd, en conclusies worden geformuleerd over de 
-geschiktheid van Python, JavaScript en Java voor webscraping-taken.
+Er zullen waardevolle inzichten verschaft worden over de haalbaarheid, voordelen en mogelijkse limitaties van beide netwerkverkeersanalyse en traditionele webscraping.
+De PoC kan leiden tot de ontwikkeling van robuuste en schaalbare tools voor data-extractie.
 %---------- Verwachte resultaten ----------------------------------------------
 \section{Verwacht resultaat, conclusie}%
 \label{sec:verwachte_resultaten}
-De verwachte resultaten van dit onderzoek worden gedefinieerd door meetbare uitkomsten voortkomend uit zowel de literatuurstudie 
-als de Proof of Concept (PoC)-fase. Deze resultaten zullen concreet worden weergegeven in vergelijkende grafieken, waarbij de 
-programmeertalen Python, JavaScript en Java worden geëvalueerd op basis van verschillende webscraping-scenario's. 
-De assen van deze grafieken vertegenwoordigen de programmeertalen (x-as) en metingen zoals uitvoeringstijd en geheugengebruik. (y-as)
-\\
-\\
-\begin{tikzpicture}
-\begin{axis}[
-  title=Uitvoeringstijd (min),
-  ybar,
-  nodes near coords,
-  bar width=0.2cm,
-  symbolic x coords={Java,Python,Javascript},
-  enlarge x limits=.2,
-  xticklabels={Java,Python,JavaScript},
-]
-
-\addplot coordinates {
-  (Java,10)
-  (Python,12)
-  (Javascript,9)
-};
-
-\end{axis}
-\end{tikzpicture}
-  
-Een aanvullend aspect van de verwachte resultaten omvat de beoordeling van codecomplexiteit en praktische bruikbaarheid in webscraping
--implementaties voor elke taal.
-
-De meerwaarde van dit onderzoek voor de doelgroep ligt in de mogelijkheid om optimalere technologische keuzes te maken. 
-Door inzicht te verschaffen in de prestaties van Python, JavaScript en Java, biedt dit onderzoek een waardevolle leidraad. 
+Dit onderzoek heeft als doel het vinden bepalen van een efficiëntie manier om aan netwerkverkeersanalyse te doen alsook het bepalen van mogelijke limitaties.
+Ook wordt er een vergelijking gemaakt tussen de 2 manieren van webscrapen. De limitaties, voordelen en nadelen worden zorgvuldig bijgehouden.

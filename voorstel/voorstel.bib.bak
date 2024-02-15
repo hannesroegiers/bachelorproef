@@ -8,6 +8,8 @@
   urldate   = {2016-09-01},
 }
 
+,
+
 @Article{DeSSirisuriya2015,
   author  = {De S Sirisuriya, SCM},
   date    = {2015},
@@ -16,14 +18,7 @@
   urldate = {2023-12-14},
 }
 
-@Article{saabith2019python,
-  author  = {Saabith, AS and Fareez, MMM and Vinothraj, T},
-  title   = {Python current trend applications-an overview},
-  number  = {10},
-  volume  = {6},
-  journal = {International Journal of Advance Engineering and Research Development},
-  year    = {2019},
-}
+,
 
 @Online{Raval2023,
   author  = {Nihar Raval},
@@ -33,12 +28,67 @@
   urldate = {2023-12-14},
 }
 
+,
+
 @Online{Chukwuebuka2023,
   author  = {Okoye Victor Chukwuebuka},
   date    = {2023-09-24},
   title   = {Understanding Java Internals: Speed and Performance},
   url     = {https://www.freecodecamp.org/news/understanding-java-internals-speed-and-performance/},
   urldate = {2023-12-14},
+}
+
+@Article{Sadiku2018,
+  author       = {Matthew N. O. Sadiku, Philip O. Adebo, Sarhan M. Musa},
+  date         = {2023-01-27},
+  journaltitle = {Business, Education, Computer Science},
+  title        = {BIG DATA IN BUSINESS},
+  doi          = {https://doi.org/10.3726/b20350},
+  url          = {https://api.semanticscholar.org/CorpusID:67348089},
+  year         = {2018},
+}
+
+@Article{Sandeep2022,
+  author  = {Shubham Sandeep and Prof. Bhanudas Satam},
+  title   = {Anti-Scraping Techniques},
+  doi     = {https://doi.org/10.48175/ijarsct-5419},
+  url     = {https://api.semanticscholar.org/CorpusID:250225997},
+  journal = {International Journal of Advanced Research in Science, Communication and Technology},
+  year    = {2022},
+}
+
+@InProceedings{RizaOeztuerk2023,
+  author = {Riza Öztürk, Haldun Akpinar},
+  date   = {2023-01-27},
+  title  = {Data driven decisions in enterprises – implications for business education and cases},
+  doi    = {https://doi.org/10.3726/b20350},
+  isbn   = {9783631892923},
+  pages  = {230},
+  url    = {https://api.semanticscholar.org/CorpusID:256177305},
+  year   = {2023},
+}
+
+@Article{Robles2020,
+  author  = {David {\'A}lvarez Robles and Pelayo Nu{\~n}o and Francisco Gonz{\'a}lez Bulnes and Juan Carlos Granda Cand{\'a}s},
+  date    = {2020-09-30},
+  title   = {Performance Analysis of Packet Sniffing Techniques Applied to Network Monitoring},
+  doi     = {https://doi.org/10.1109/TLA.2021.9447699},
+  pages   = {490-499},
+  url     = {https://api.semanticscholar.org/CorpusID:224903184},
+  volume  = {19},
+  journal = {IEEE Latin America Transactions},
+  year    = {2020},
+}
+
+@Article{Chiauzzi2019DigitalTE,
+  author  = {Emil Chiauzzi and Paul Wicks},
+  date    = {2019-02-01},
+  title   = {Digital Trespass: Ethical and Terms-of-Use Violations by Researchers Accessing Data From an Online Patient Community},
+  doi     = {https://doi.org/10.2196/11985},
+  url     = {https://api.semanticscholar.org/CorpusID:73479496},
+  volume  = {21},
+  journal = {Journal of Medical Internet Research},
+  year    = {2019},
 }
 
 @Comment{jabref-meta: databaseType:biblatex;}
