@@ -32,9 +32,32 @@ Traditionele webscraping begint met het identificeren van de doelpagina die de g
 
 Enkele voordelen van de traditionele webscraping manier zijn:
 \begin{itemize}
-    \item Eenvoudig: Traditionele webscraping is een van de eenvoudigere methodes die met weinig technische kennis kan worden toegepast. Op fora zoals StackOverflow
+    \item Eenvoudig: Traditionele webscraping is een van de eenvoudigere methodes die met weinig technische kennis kan worden toegepast. Deze zijn eenvoudig in de zin dat je met zeer weinig code al een basis scraper kan bouwen.
+    \item Repliceerbaarheid: De manier waarop de website wordt binnengehaald in deze traditionele webscrapers is voor iedere website hetzelfde. Dit zorgt ervoor dat deze scrapers makkelijk te hergebruiken zijn.
 \end{itemize}
 
+Deze eenvoudigheid komt echter niet zonder kost, hier zijn de nadelen van traditionele webscrapers:
+
+\begin{itemize}
+    \item Beperkte functionaliteit: Traditionele webscraping is beperkt tot het extraheren van data die op de website is gepresenteerd. Het is niet mogelijk om data te extraheren die dynamisch wordt gegenereerd of die is opgeslagen in databases.
+    \item Onderhoud: Websites en dus ook de HTML-code veranderen voortdurend, waardoor webscraping scripts regelmatig moeten worden bijgewerkt zodat ze hun correcte werking behouden.
+    \item Parsen: Wanneer de HTML structuur complex en/of niet consistent is kan dit voor problemen zorgen wanneer de HTML-code geparset wordt. Als de HTML structuur niet consistent is zorgt dit ervoor dat de data waarnaar men zoekt misschien niet in dezelfde tag staat als op een vorige pagina van de zelfde website. Het kan ook zijn dat de tag waarin de data staat niet onder dezelfde parent-tag staat.  (insert example)
+    \item Efficiëntie: De traditionele webscraping methode haalt de volledige webpagina binnen. Dit wil zeggen dat voor een webscraper die de prijs van één artikel ophaalt, de volledige webpagina wordt geëxtraheerd. Bij grote websites met veel webpagina's zorgt dit op 2 plaatsen voor vertraging. Eerst moet deze volledige webpagina opgehaald worden, daarna wordt deze geparset en dan pas dan kan men opzoek naar de data.
+\end{itemize}
+
+Een alternatieve manier om aan webscraping te doen is aan de hand van API's. Websites bieden soms API's (Application Programming Interfaces) aan die het mogelijk maken om data te verzamelen in een gestructureerd formaat\autocite{Ayushi2021}. API's zijn ontworpen voor developers en bieden een gestandaardiseerde manier om data te communiceren.
+
+\subsection{API webscraping}
+
+Een van de belangrijkste voordelen van API's is hun gebruiksgemak. Ze bieden een gestandaardiseerde interface waarmee gebruikers eenvoudig toegang kunnen krijgen tot de gewenste gegevens. Dit maakt het proces van gegevensverzameling efficiënter en toegankelijker, zelfs voor gebruikers met beperkte technische vaardigheden. Bovendien worden API's over het algemeen onderhouden door de website-eigenaar, wat de betrouwbaarheid van de gegevensstroom verhoogt in vergelijking met webscraping, waarbij de structuur van de website kan veranderen zonder voorafgaande kennisgeving, wat leidt tot inconsistenties in de gegevens. Een ander voordeel van API's is hun snelheid. In vergelijking met webscraping kunnen API's gegevens sneller leveren doordat ze directe toegang hebben tot de backend van de website, waardoor de latentie wordt verminderd en de totale efficiëntie van het verzamelproces wordt verbeterd.
+
+Een ander voordeel van API's is hun snelheid. In vergelijking met webscraping kunnen API's gegevens sneller leveren doordat ze directe toegang hebben tot de backend van de website, waardoor de latentie wordt verminderd en de algehele efficiëntie van het verzamelproces wordt verbeterd.
+
+\vspace{5mm} %5mm vertical space
+
+Ondanks deze voordelen zijn er echter ook nadelen verbonden aan het gebruik van API's. Een van de belangrijkste beperkingen is de beschikbaarheid ervan. Niet alle websites bieden API's aan, dit limiteert de mogelijkheden voor gegevensverzameling , vooral bij het werken met minder bekende bronnen.
+Daarnaast kunnen API's beperkte functionaliteit bieden, waarbij mogelijk niet alle benodigde gegevens beschikbaar zijn via de API. Dit kan gebruikers dwingen om toch andere methoden te gebruiken om aanvullende gegevens te verkrijgen, wat de complexiteit van het verzamelproces kan vergroten.
+Een ander nadeel van het gebruik van API's is het vereiste authenticatieproces. Sommige API's vereisen dat gebruikers zich authentiseren alvorens ze toegang krijgen tot de API, wat extra stappen met zich meebrengt en de implementatie kan compliceren.
 
 \subsection{Netwerkverkeersanalyse}
 
@@ -53,3 +76,5 @@ dit is een opensource tool met een breed scala
 aan funties voor het vastleggen van allerlei soorten netwerkverkeer. Ook de python libraries ’scapy’
 en ’mitmproxy’ bieden krachtige tools voor het
 analyseren en manipuleren van netwerkverkeer.
+
+\section{Anti webscraping maatregelen}

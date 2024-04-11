@@ -35,4 +35,11 @@
   publisher = {Wiley & Sons, Incorporated, John},
 }
 
+@Manual{Nate2023,
+  author = {Nate,Prewitt and Ian, Cordasco and Seth,Michael,Larson},
+  date   = {2023-05-22},
+  title  = {Requests: HTTP for Humans™},
+  url    = {https://requests.readthedocs.io/en/latest/},
+}
+
 @Comment{jabref-meta: databaseType:biblatex;}
