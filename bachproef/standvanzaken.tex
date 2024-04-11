@@ -7,12 +7,38 @@
 
 % Pas na deze inleidende paragraaf komt de eerste sectiehoofding.
 
-Dit hoofdstuk bevat je literatuurstudie. De inhoud gaat verder op de inleiding, maar zal het onderwerp van de bachelorproef *diepgaand* uitspitten. De bedoeling is dat de lezer na lezing van dit hoofdstuk helemaal op de hoogte is van de huidige stand van zaken (state-of-the-art) in het onderzoeksdomein. Iemand die niet vertrouwd is met het onderwerp, weet nu voldoende om de rest van het verhaal te kunnen volgen, zonder dat die er nog andere informatie moet over opzoeken \autocite{Pollefliet2011}.
+In de digitale wereld van vandaag is data desleutel tot succes. Bedrijven verzamelen en ana-lyseren data om hun klanten beter te begrijpen,hun marketingstrategieën te optimaliseren, enhun concurrentiepositie te versterken \autocite{},
+Deze enorme vraag naar kwalitatieve data drijftde ontwikkeling van nieuwe en innovatieve me-thodes voor dataverzameling. Er zijn vele manie-ren waarop er aan dataverzameling kan gedaan worden, deze studie focussed zich op webscra-ping.
 
-Je verwijst bij elke bewering die je doet, vakterm die je introduceert, enz.\ naar je bronnen. In \LaTeX{} kan dat met het commando \texttt{$\backslash${textcite\{\}}} of \texttt{$\backslash${autocite\{\}}}. Als argument van het commando geef je de ``sleutel'' van een ``record'' in een bibliografische databank in het Bib\LaTeX{}-formaat (een tekstbestand). Als je expliciet naar de auteur verwijst in de zin (narratieve referentie), gebruik je \texttt{$\backslash${}textcite\{\}}. Soms is de auteursnaam niet expliciet een onderdeel van de zin, dan gebruik je \texttt{$\backslash${}autocite\{\}} (referentie tussen haakjes). Dit gebruik je bv.~bij een citaat, of om in het bijschrift van een overgenomen afbeelding, broncode, tabel, enz. te verwijzen naar de bron. In de volgende paragraaf een voorbeeld van elk.
+\section{Webscraping}
+Webscraping is een techniek die automatisch
+data extraheert van websites. Deze data kan in
+verschillende formaten voorkomen, zoals HTML,
+JSON, XML en CSV. Webscraping heeft tal van toepassingen,
+waaronder:
+\begin{itemize}
+    \item Data-extractie is het verzamelen van data van websites voor diverse doeleinden,
+    zoals marktonderzoek,prijsvergelijking en het verzamelen van recensies
+    \item Het automatiseren van taken die anders handmatig zouden moeten worden uitgevoerd, denk maar
+    aan het invullen van bepaalde formulieren, aanmaken van documenten en downloaden van bestanden
+    \item Monitoren van websites voor veranderingen van prijzen, nieuwe producten of statussen van bepaalde zaken
+\end{itemize}
 
-\textcite{Knuth1998} schreef een van de standaardwerken over sorteer- en zoekalgoritmen. Experten zijn het erover eens dat cloud computing een interessante opportuniteit vormen, zowel voor gebruikers als voor dienstverleners op vlak van informatietechnologie~\autocite{Creeger2009}.
+\subsection{Traditionele webscraping}
 
-Let er ook op: het \texttt{cite}-commando voor de punt, dus binnen de zin. Je verwijst meteen naar een bron in de eerste zin die erop gebaseerd is, dus niet pas op het einde van een paragraaf.
+De traditionele webscraping methoden base-ren zich op het parsen van de HTML-code van webpaginas \autocite{sirisuriya}. Dit kan gedaan
+worden met behulp van diverse tools, voornamelijk python libraries, zoals BeautifulSoup, Scrapy en
+Selenium. In JavaScript heb je dan weer Cheerio en Puppeteer en in Java heb je Jsoup. De voordelen van deze methodes zijn dat ze eenvoudig zijn aangezien iedere website HTML gebruikt en
+het dus relatief eenvoudig is om dit te implementeren. 2 verschillende webscrapers voor verschillende websites gaan dus vaak veel gelijkenissen hebben. De eenvoudigheid komt echter niet zonder kost aan prestaties. De HTML-code van grote websites bevat heel veel informatie over de opbouw van de website en de website structuur, dit is meestal niet de informatie waar men naar op
+zoek is bij het webscrapen. Al deze code moet eerst geparsed worden om dan eigenlijk maar
+een klein deeltje van deze geparste code op te
+slaan of bij te houden. Zeker bij grotere websites vergt dit enorm veel rekenkracht, dit resulteert
+in inefficiënte data-extractie en toont aan dat de
+traditionele webscraping methodes vaak schaalbaarheid problemen met zich mee brengen.
 
-\lipsum[7-20]
+\vspace{5mm} %5mm vertical space
+
+Deze methodes zijn niet flexibel omdat deze scrapers vertrouwen op een bepaald HTML-code structuur. Dit wil zeggen dat een scraper die een website meerdere malen wilt scrapen, onderhouden
+moet worden want wanneer een website geupdate wordt bestaat er een grote kans dat de webscraper niet meer werkt omdat de HTML-code is
+aangepast. Als de HTML tag die de gewenste data
+bevat verplaatst is, is de kans groot dat de scraper de tag en dus ook de data niet meer terug vind. De data die kan terug gevonden worden in de HTML-code is data die zichtbaar is. Websites implementeren vaker anti-scrapingmaatregelen om te weren tegen ongewenst dataverkeer. Traditionele methoden zijn hierdoor gevoelig voor blokkeringen en kunnen inconsistente of onvolledige data opleveren \autocite{Sandeep & Satam, 2022}.
