@@ -8,7 +8,7 @@
   "webview": "11FA6D3B4BBBF7280EA44A5A56D0BB6D"
 }{
   "message": {
-    "method": "Network.requestWillBeSent",
+    "method": "NetwoRrk.requestWillBeSent",
     "params": {
       "documentURL": "https://www.oddsportal.com/football/belgium/jupiler-pro-league/",
       "frameId": "11FA6D3B4BBBF7280EA44A5A56D0BB6D",
