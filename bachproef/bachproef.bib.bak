@@ -42,4 +42,137 @@
   url    = {https://requests.readthedocs.io/en/latest/},
 }
 
+@Online{Ayushi2021,
+  author  = {Ayushi, Rawat},
+  date    = {2021-07-09},
+  editor  = {Analytics Vidhya},
+  title   = {What is an API | API for beginners?},
+  url     = {https://medium.com/analytics-vidhya/what-is-an-api-api-for-beginners-4854f34153e},
+  urldate = {2024-04-11},
+}
+
+@Online{Soup2004,
+  author  = {Beautiful Soup},
+  date    = {2004},
+  title   = {Beautiful Soup Documentation},
+  url     = {https://beautiful-soup-4.readthedocs.io/en/latest/},
+  urldate = {2024-07-31},
+}
+
+@Online{Flynn2018,
+  author  = {Christopher Flynn},
+  date    = {2018-04-11},
+  title   = {PyPi Stats},
+  url     = {https://pypistats.org/top},
+  urldate = {2024-07-31},
+}
+
+@Online{Muthukadan2011,
+  author  = {Baiju Muthukadan},
+  date    = {2011},
+  title   = {Selenium with Python},
+  url     = {https://selenium-python.readthedocs.io/},
+  urldate = {2024-08-02},
+}
+
+@Online{Nate2011,
+  author  = {Nate,Prewitt and Ian, Cordasco and Seth,Michael,Larson},
+  date    = {2011-02-13},
+  title   = {Requests: HTTP for Humans™},
+  url     = {https://requests.readthedocs.io/en/latest/user/quickstart/},
+  urldate = {2024-07-31},
+}
+
+@Online{Vastel2023,
+  author  = {Antoine Vastel},
+  date    = {2023-02-14},
+  editor  = {DataDome},
+  title   = {How to Detect Web Scraping Attacks},
+  url     = {https://datadome.co/threats/detect-web-scraping-attacks/},
+  urldate = {2024-08-06},
+}
+
+@Online{Peter2022,
+  author = {Peter, Loshin and Madelyn, Bacon},
+  date   = {2022-07-01},
+  editor = {Techtarget},
+  title  = {user behavior analytics (UBA)},
+  url    = {https://www.techtarget.com/searchsecurity/definition/user-behavior-analytics-UBA},
+}
+
+@InBook{Lotfi2021,
+  author = {Lotfi, Chaimaa and Srinivasan, Swetha and Ertz, Myriam and Latrous, Imen},
+  title  = {Web Scraping Techniques and Applications: A Literature Review},
+  doi    = {10.52458/978-93-91842-08-6-38},
+  isbn   = {9789391842086},
+  pages  = {381-394},
+  month  = {01},
+  year   = {2021},
+}
+
+@Online{Don2018,
+  author = {Don, Gotterbarn and Bo, Brinkman and Catherine, Flick and Michael, S, Kirkpatrick and Keith, Miller and Kate, Varansky and Marty, J, Wolf},
+  date   = {2018-01-02},
+  editor = {Association for Computing Machinery},
+  title  = {ACM Code of Ethics and Professional Conduct},
+  url    = {https://www.acm.org/code-of-ethics},
+}
+
+@Article{OnesiOzigagun2024,
+  author       = {Oseremi Onesi-Ozigagun and Yinka James Ololade and Nsisong Louis Eyo-Udo and Damilola Oluwaseun Ogundipe},
+  title        = {Data-driven decision making: Shaping the future of business efficiency and customer engagement},
+  issn         = {2783-0179},
+  number       = {2},
+  pages        = {019--029},
+  volume       = {7},
+  date         = {2024-04},
+  doi          = {10.53430/ijmru.2024.7.2.0031},
+  journaltitle = {International Journal of Multidisciplinary Research Updates},
+  publisher    = {Orion Scholar Journals Publication},
+}
+
+@Online{DeGroote2022,
+  author  = {DeGroote, Sandy},
+  date    = {2022-10-01},
+  title   = {Subject and Course Guides: Digital UIC: Static and Dynamic Websites},
+  url     = {https://researchguides.uic.edu/digital-uic/static-dynamic},
+  urldate = {2024-08-07},
+}
+
+@Online{mdn2023,
+  author = {mdn web docs},
+  date   = {2023-04},
+  editor = {mozilla},
+  title  = {What are browser developer tools?},
+  url    = {https://developer.mozilla.org/en-US/docs/Learn/Common_questions/Tools_and_setup/What_are_browser_developer_tools},
+}
+
+@Article{Khder2021,
+  author       = {Khder, Moaiad},
+  title        = {Web Scraping or Web Crawling: State of Art, Techniques, Approaches and Application},
+  issn         = {2074-8523},
+  number       = {3},
+  pages        = {145--168},
+  volume       = {13},
+  date         = {2021-11},
+  doi          = {10.15849/ijasca.211128.11},
+  journaltitle = {International Journal of Advances in Soft Computing and its Applications},
+  publisher    = {Alzaytoonah University of Jordan},
+}
+
+@Online{Taylor2020,
+  author = {Craig Taylor},
+  date   = {2020-02-12},
+  editor = {Cyberhoot},
+  title  = {Packet Sniffing},
+  url    = {https://cyberhoot.com/cybrary/packet-sniffing/},
+}
+
+@Online{Kinsta2022,
+  author = {Kinsta},
+  date   = {2022-09-30},
+  title  = {Wat is webscraping? Zo extract je legaal webcontent},
+  url    = {https://kinsta.com/nl/kennisbank/wat-is-webscraping/},
+}
+
 @Comment{jabref-meta: databaseType:biblatex;}

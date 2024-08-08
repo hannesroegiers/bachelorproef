@@ -1,0 +1,53 @@
+\chapter{\IfLanguageName{dutch}{Proof of concept}{State of the art}}%
+\label{ch:proof-of-concept}
+
+Dit deel van het onderzoek stelt een Proof of Concept voor die zich richt op het web scrapen van het netwerkverkeer van een website zodat de gestructureerde data die verstuurd wordt van de server kan onderschept worden. Sommige van deze bestanden die de server verstuurd, bevatten de gestructureerde data die de website gebruikt om zijn inhoud dynamisch te genereren. In deze gestructureerde data is vaak meer informatie te vinden dan op de website getoond wordt. Dit zorgt voor een verhoogde kwaliteit van verzamelde data. Het vergt ook minder rekenkracht van de machine dat de web scraper op uitgevoerd wordt omdat de HTML-code niet geparsed hoeft te worden. De Proof of Concept bestaat uit een Python script.
+
+\section{Vereisten}
+Het uitvoeren van deze Proof of Concept vereist bepaalde software op het systeem. De vereiste software zijn:
+\begin{itemize}
+    \item Python \footnote{\url{https://www.python.org/downloads/}}
+    \item De package manager pip \footnote{\url{https://pip.pypa.io/en/stable/installation/}}
+\end{itemize}
+
+\section{Versies}
+In deze Proof of Concept wordt gebruik gemaakt van Python versie 3.10.2. De python-Bibliotheken die in deze Proof of Concept gebruikt zullen worden zijn:
+
+\begin{itemize}
+    \item \textbf{json: } Deze Python-bibliotheek wordt gebruikt om met JSON-bestanden te werken. json is standaard geinstalleerd in Python
+
+    \item \textbf{Requests: } Deze Python-bibliotheek wordt gebruikt om HTTP-verzoeken te maken.
+
+    \item \textbf{Selenium: } Selenium wordt gebruikt om het netwerkverkeer op te halen.
+\end{itemize}
+
+Om mogelijke conflicten tussen de gebruikte Python-bibliotheken te voorkomen wordt gebruik gemaakt van een virtuele Python omgeving. Om de virtuele omgeving te creëren moet het commando \ref{cmd:createvenv} uitgevoerd worden.
+
+\begin{lstlisting}[language=bash, label={cmd:createvenv}, caption={Het commando om een virtuele Python omgeving te creëren}]
+    python -m venv /path/to/new/virtual/environment/
+\end{lstlisting}
+Om de virtuele Python omgeving te activeren op een Windows machine moet het commando \ref{cmd:startvenv} uitgevoerd worden, voor een moet het commando \ref{bash:startvenv} gebruikt worden.
+\begin{lstlisting}[language=bash, label={cmd:startvenv}, caption={Het commando om een virtuele Python omgeving te activeren op een Windows machine}]
+    venv\Scripts\activate.bat
+\end{lstlisting}
+
+\begin{lstlisting}[language=bash, label={bash:startvenv}, caption={Het commando om een virtuele Python omgeving te activeren op een Linux of MacOS machine}]
+    $ source myvenv/bin/activate
+\end{lstlisting}
+
+Om de gebruikte Python-bibliotheken te installeren moet het commando \ref{cmd:req.txt} uitgevoerd worden. het bestand \texttt{requirements.txt} is te vinden op de github-pagina \footnote{\url{https://github.com/hannesroegiers/bachelorproef/tree/main/PoC}}van deze Proof of Concept. Dit bestand bevat de nodige Python-bibliotheken met de gebruikte versie.
+\begin{lstlisting}[language=bash, label={cmd:req.txt}, caption={Het commando om de nodige Python-bibliotheken te installeren}]
+    pip install -r requirements.txt
+\end{lstlisting}
+
+\section{Netwerk verkeer onderscheppen}
+
+\section{Relevante logs }
+
+\section{Relevante URL's}
+
+\section{Inhoud rangschikking}
+
+\section{Evaluatie}
+
+\section{Beperkingen}
