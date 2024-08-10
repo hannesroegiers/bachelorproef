@@ -7,7 +7,7 @@ Dit deel van het onderzoek stelt een Proof of Concept voor die zich richt op het
 Het uitvoeren van deze Proof of Concept vereist bepaalde software op het systeem. De vereiste software zijn:
 \begin{itemize}
     \item Python \footnote{\url{https://www.python.org/downloads/}}
-    \item De package manager pip \footnote{\url{https://pip.pypa.io/en/stable/installation/}}
+    \item De package manager pip~\footnote{\url{https://pip.pypa.io/en/stable/installation/}}
 \end{itemize}
 
 \section{Versies}
@@ -40,14 +40,38 @@ Om de gebruikte Python-bibliotheken te installeren moet het commando \ref{cmd:re
     pip install -r requirements.txt
 \end{lstlisting}
 
-\section{Netwerk verkeer onderscheppen}
+\section{Verkenning}
+In de eerste fase van deze Proof of Concept doen we een verkenning van de doel website \footnote{\url{https://www.oddsportal.com/football/belgium/jupiler-pro-league/}}.
+Voor deze verkenning maken we gebruik van de Chrome browser en de developer tools binnenin Chrome. De developer tools kunnen geopend worden door op de functie toets \texttt{F12} te drukken of een klik op de rechtermuisknop te doen op de website en daarna op \texttt{Inspect} of \texttt{Inspecteren} te klikken. Wanneer deze website geladen wordt, stuurt deze een aantal HTTP-verzoeken naar de server. De antwoorden van deze verzoeken worden gebruikt om de inhoud van de website dynamisch op te bouwen. Deze HTTP-verzoeken zijn terug te vinden in het \texttt{Network} tabblad van de developer tools en stellen het netwerkverkeer van de website voor.
 
-\section{Relevante logs }
+Voor web scrapen zijn er dus twee tabbladen in de developer tools die interessant zijn. Het \texttt{Elements} en het \texttt{Network} tabblad. Bij \texttt{Elements} kan de HTML-code -en structuur bekeken worden en in het \texttt{Network} tabblad kan het netwerkverkeer van de website bekeken worden zoals te zien in figuur~\ref{fig:networktab}. 
 
-\section{Relevante URL's}
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\linewidth]{graphics/DevTools1.png}
+    \caption{De developer tools, het netwerk tabblad}
+    \label{fig:networktab}
+\end{figure}
 
-\section{Inhoud rangschikking}
+Wanneer de pagina herladen wordt, is in dit tabblad al het netwerkverkeer te zien dat tussen de client (website) en de server loopt~\ref{fig:networktab2}.
 
-\section{Evaluatie}
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=\linewidth]{graphics/DevTools2.png}
+    \caption{Het netwerkverkeer in de developer tools}
+    \label{fig:networktab2}
+\end{figure}
 
-\section{Beperkingen}
+Hier zijn vele bestanden te vinden maar dit onderzoek richt zich op bestanden die gestructureerde data bevatten. In de developer tools kan hier op gefilterd worden door \texttt{Fetch/XHR} te selecteren. De meeste zichtbare bestanden zullen nu JSON en XML bestanden zijn.
+
+\subsection{website}
+Op de doel website\footnote{\url{https://www.oddsportal.com/football/belgium/jupiler-pro-league/}} zijn 3 kolommen te zien \ref{fig:website1}, \texttt{1}, \texttt{x} en \texttt{2}. De cijfers die in deze kolommen staan, zijn de data we met de scraper gaan proberen te extraheren.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\linewidth]{graphics/website1.png}
+    \caption{De doel website}
+    \label{fig:website1}
+\end{figure}
+
+In een tweede fase 
