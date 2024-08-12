@@ -134,4 +134,9 @@ De Python-loop stuurt hierbij een reeks gestructureerde HTTP-verzoeken naar de s
     \end{lstlisting}
 \end{listing}
 
-Na het analyseren van het HTTP-verzoek, kan worden geconcludeerd dat er geen duidelijke structuur in zit het verzoek zit. De parameters die in het verzoek gebruikt worden lijken ook vertroebeld te zijn, het is dus niet mogelijk om hier iets uit te verstaan zonder de javascript code te gebruiken om dit te reverse engineeren, dit zou ook enorm veel tijd en technische kennis eisen. De laatste parameter komt overeen met het bestand dat wordt terug gegeven, ook met deze parameter kunnen we niet veel doen. Wanneer de pagina wordt herladen, blijft de inhoud van dit bestand wel hetzelfde maar de naam verandert.
+Na een grondige analyse van het HTTP-verzoek kan worden geconcludeerd dat er geen duidelijke en consistente structuur aanwezig is in het verzoek. De parameters die in het verzoek worden gebruikt, lijken opzettelijk vertroebeld (geobfusceerd) te zijn, waardoor ze bestaan uit willekeurige tekens zonder directe betekenis. Dit maakt het onmogelijk om de inhoud en betekenis van deze parameters zonder meer te interpreteren. Om enige nuttige informatie hieruit te kunnen destilleren, zou het noodzakelijk zijn om de bijbehorende JavaScript-code te reverse-engineeren. Dit proces zou echter aanzienlijke tijd en diepgaande technische kennis vereisen.
+\\ \\
+Een van de parameters in het verzoek komt overeen met het bestand dat als antwoord wordt teruggestuurd. Hoewel de inhoud van dit bestand constant blijft bij het herladen van de pagina, verandert de naam van het bestand bij elke herlaadbeurt, het enige dat consistent blijft bij deze naam is dat het start met \texttt{?\_=17}. Deze naamwijziging voegt een extra laag van complexiteit toe, waardoor verdere analyse van deze parameter bijzonder uitdagend is.
+\\ \\
+De web scraping methode die zal worden toegepast voor deze website maakt gebruik van netwerkverkeersanalyse. Het volledige netwerkverkeer zal worden opgehaald en dan daarna gefilterd worden op bestandstype, naam en inhoud. De focus zal liggen op robuustheid en minimaal onderhoud.
+
