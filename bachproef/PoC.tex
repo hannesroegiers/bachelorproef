@@ -26,7 +26,7 @@ Om mogelijke conflicten tussen de gebruikte Python-bibliotheken te voorkomen wor
 \begin{lstlisting}[language=bash, label={cmd:createvenv}, caption={Het commando om een virtuele Python omgeving te creëren}]
     python -m venv /path/to/new/virtual/environment/
 \end{lstlisting}
-Om de virtuele Python omgeving te activeren op een Windows machine moet het commando \ref{cmd:startvenv} uitgevoerd worden, voor een moet het commando \ref{bash:startvenv} gebruikt worden.
+Om de virtuele Python omgeving te activeren op een Windows machine moet het commando \ref{cmd:startvenv} uitgevoerd worden, voor een Linux of MacOS machine moet het commando \ref{bash:startvenv} gebruikt worden.
 \begin{lstlisting}[language=bash, label={cmd:startvenv}, caption={Het commando om een virtuele Python omgeving te activeren op een Windows machine}]
     venv\Scripts\activate.bat
 \end{lstlisting}
@@ -41,7 +41,7 @@ Om de gebruikte Python-bibliotheken te installeren moet het commando \ref{cmd:re
 \end{lstlisting}
 
 \section{Verkenning}
-Op de doel website\footnote{\url{https://www.oddsportal.com/football/belgium/jupiler-pro-league/}} zijn een aantal voetbal wedstrijden te zien. Naast iedere wedstrijd staan 3 kolommen zoals te zien in \ref{fig:website1}. De cijfers die in deze kolommen staan zijn de data die de scraper gaat proberen te extraheren.
+Op de doel website\footnote{\url{https://www.oddsportal.com/football/belgium/jupiler-pro-league/}} zijn een aantal voetbal wedstrijden te zien. Naast iedere wedstrijd staan 3 kolommen zoals te zien in \ref{fig:website1}. De cijfers(betting odds voor de wedstrijden) die in deze kolommen staan zijn de data die de scraper gaat proberen te extraheren.
 
 \begin{figure}[h]
     \centering
@@ -51,9 +51,11 @@ Op de doel website\footnote{\url{https://www.oddsportal.com/football/belgium/jup
 \end{figure}
 
 \section{Analyse}
-In deze tweede fase wordt er gebruikgemaakt van de Chrome browser en de developer tools binnenin Chrome. De developer tools kunnen geopend worden door op de functie toets \texttt{F12} te drukken of een klik op de rechtermuisknop te doen op de website en daarna op \texttt{Inspect} of \texttt{Inspecteren} te klikken. Wanneer deze website geladen wordt, stuurt deze een aantal HTTP-verzoeken naar de server. De antwoorden van deze verzoeken worden gebruikt om de inhoud van de website dynamisch op te bouwen. Deze HTTP-verzoeken en hun antwoorden zijn terug te vinden in het \texttt{Network} tabblad van de developer tools en stellen het netwerkverkeer van de website voor.
+In deze tweede fase van het onderzoek wordt gebruikgemaakt van de Chrome-browser en de ingebouwde developer tools om het netwerkverkeer van een website te analyseren. De developer tools kunnen worden geopend door op de functietoets \texttt{F12} te drukken of door met de rechtermuisknop op een webpagina te klikken en vervolgens te kiezen voor \texttt{Inspect} of \texttt{Inspecteren}.
+\\
+Bij het laden van een website worden verschillende HTTP-verzoeken naar de server gestuurd, waarvan de antwoorden dienen om de inhoud van de website dynamisch op te bouwen. Deze HTTP-verzoeken en hun antwoorden zijn te vinden in het \texttt{Network}-tabblad van de developer tools, waar het netwerkverkeer van de website in detail wordt weergegeven.
 
-Voor web scrapen zijn er dus twee tabbladen in de developer tools die interessant zijn. Het \texttt{Elements} en het \texttt{Network} tabblad. Bij \texttt{Elements} kan de HTML-code -en structuur bekeken worden en in het \texttt{Network} tabblad kan het netwerkverkeer van de website bekeken worden zoals te zien in figuur~\ref{fig:networktab}. 
+Voor web scraping zijn twee specifieke tabbladen in de developer tools van beland: het \texttt{Elements}-tabblad en het \texttt{Network}-tabblad. In het \texttt{Elements}-tabblad kan de HTML-code en structuur van de website worden bekeken. Dit biedt inzicht in hoe de inhoud van de website is opgebouwd. In het \texttt{Network}-tabblad kan het netwerkverkeer tussen de client(de browser) en de server worden geanalyseerd, zoals geilustreerd in figuur~\ref{fig:networktab}.
 
 \begin{figure}[h]
     \centering
@@ -62,13 +64,74 @@ Voor web scrapen zijn er dus twee tabbladen in de developer tools die interessan
     \label{fig:networktab}
 \end{figure}
 
-Wanneer de pagina herladen wordt, is in dit tabblad al het netwerkverkeer te zien dat tussen de client (website) en de server loopt~\ref{fig:networktab2}.
+Wanneer de webpagina opnieuw wordt geladen, worden in het Network-tabblad alle netwerkverzoeken weergegeven die plaatsvinden tussen de client en de server, zoals te zien is in figuur~\ref{fig:networktab2}.
 
-\begin{figure}[ht]
+\begin{figure}[h]
     \centering
     \includegraphics[width=\linewidth]{graphics/DevTools2.png}
     \caption{Het netwerkverkeer in de developer tools}
     \label{fig:networktab2}
 \end{figure}
 
-Hier zijn veel bestanden te vinden maar dit onderzoek richt zich op bestanden die gestructureerde data bevatten. In de developer tools kan hier op gefilterd worden door \texttt{Fetch/XHR} te selecteren. De meeste zichtbare bestanden zullen nu JSON en XML bestanden zijn.
+Hoewel er veel verschillende soorten bestanden worden uitgewisseld, richt dit onderzoek zich op bestanden die gestructureerde data bevatten. In de developer tools kan dit verkeer worden gefilterd door de optie \texttt{Fetch/XHR} te selecteren. Dit filter toont voornamelijk JSON- en XML-bestanden, die vaak belangrijke data bevatten voor verdere analyse.
+Er blijven nu slechts 7 requests over~\ref{fig:networktab3}.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\linewidth]{graphics/DevTools3.png}
+    \caption{Het gefilterde netwerkverkeer in de developer tools}
+    \label{fig:networktab3}
+\end{figure}
+
+De antwoorden van deze overblijvende HTTP-verzoeken bevatten allemaal JSON-bestanden. Na verdere analyse van deze bestanden is vast te stellen dat de betting odds terug te vinden zijn in het HTTP-verzoek dat een bestand met naam \texttt{?\_=1723461701} terug geeft.
+
+\subsubsection{Bepalen van de web scraping methode}
+De HTML-code van de doel website is complex, hierdoor is de code moeilijk te lezen en kleine veranderingen in de code kunnen ervoor zorgen de locatie van de betting odds verandert. De website wordt dynamisch opgebouwd met behulp van HTTP-verzoeken die gestructureerde data opvragen. Dit zorgt ervoor dat web scraping met netwerkverkeersanalyse bij deze website de beste keuze is.
+\\
+\\
+In figuur~\ref{fig:networktab4} is te zien hoe de header van het HTTP-verzoek is opgebouwd. Indien de website een duidelijke en consistente structuur in de headers heeft, kan een Python-script worden ontwikkeld dat gebruik maakt van een loop om systematisch HTTP-requests te versturen. Deze aanpak maakt het mogelijk om alle benodigde data te verzamelen zonder de beperkingen van traditionele scraping-methoden die zich puur op de HTML-content richten.
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\linewidth]{graphics/headers.png}
+    \caption{De headers van het betting odds HTTP-verzoek}
+    \label{fig:networktab4}
+\end{figure}
+
+
+De Python-loop stuurt hierbij een reeks gestructureerde HTTP-verzoeken naar de server van de doelwebsite. Door gebruik te maken van variabelen in de URL of parameters binnen de request headers, kan het script automatisch door verschillende datasets navigeren en deze extraheren. Dit minimaliseert de kans op blokkades door anti-scraping maatregelen en verhoogt de efficiëntie van de data-extractie. In code fragment~\ref{code:example5} is een voorbeeld te zien over web scrapen met netwerkverkeersanalyse wanneer de parameters in de HTTP-verzoek header gestructureerd en niet vertroebeld zijn.
+\begin{listing}
+    \begin{lstlisting}[language=python, captionpos=b, caption={Een voorbeeld van een eenvoudige webscraper.}, label={code:example5}]
+        import requests
+
+        # Dummy URL: https://www.oddsportal.com/ajax-sport-country-tournament/sport/country/league/
+
+        # Deze arrays kunnen manueel onderhouden worden of opgehaald worden met een API
+        request_parameters = {
+            "Voetbal": {
+                "Belgie": ["Jupiler Pro League", "Eerste klasse B"],
+                "Nederland": ["Eredivisie", "Eerste Divisie"],
+                "Engeland": ["Premier League", "Championship"],
+            },
+            "Hockey": {
+                "België": ["Belfius Hockey League"],
+                "Nederland": ["Hoofdklasse", "Promotieklasse"],
+                "Duitsland": ["Bundesliga"],
+            },
+            "Tennis": {
+                "Internationaal": ["ATP Tour", "WTA Tour"],
+                "Verenigde Staten": ["US Open Series"],
+                "Australie": ["Australian Open"],
+            }
+        }
+
+        # Overlopen van alle url parameters
+        for sport, countries in request_parameters.items():
+            for country, leagues in countries.items():
+                for league in leagues:
+                    request_string = f"https://www.oddsportal.com/ajax-sport-country-tournament/{sport}/{country}/{league}/"
+
+                    r = requests.get(request_string)
+    \end{lstlisting}
+\end{listing}
+
+Na het analyseren van het HTTP-verzoek, kan worden geconcludeerd dat er geen duidelijke structuur in zit het verzoek zit. De parameters die in het verzoek gebruikt worden lijken ook vertroebeld te zijn, het is dus niet mogelijk om hier iets uit te verstaan zonder de javascript code te gebruiken om dit te reverse engineeren, dit zou ook enorm veel tijd en technische kennis eisen. De laatste parameter komt overeen met het bestand dat wordt terug gegeven, ook met deze parameter kunnen we niet veel doen. Wanneer de pagina wordt herladen, blijft de inhoud van dit bestand wel hetzelfde maar de naam verandert.

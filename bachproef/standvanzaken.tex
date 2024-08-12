@@ -7,7 +7,7 @@
 
 % Pas na deze inleidende paragraaf komt de eerste sectiehoofding.
 In de digitale wereld van vandaag is data de sleutel tot succes. Bedrijven verzamelen en analyseren data om hun klanten beter te begrijpen, hun marketingstrategieën te optimaliseren, en hun concurrentiepositie te versterken \autocite{OnesiOzigagun2024},
-Deze enorme vraag naar kwalitatieve data drijft de ontwikkeling van nieuwe en innovatieve methodes voor dataverzameling. Er zijn vele manieren waarop er aan dataverzameling kan gedaan worden, deze studie focust zich op webscraping.
+Deze enorme vraag naar kwalitatieve data drijft de ontwikkeling van nieuwe en innovatieve methodes voor dataverzameling. Er zijn vele manieren waarop er aan dataverzameling kan gedaan worden, deze studie focust zich op web scraping.
 
 \section{Webscraping}
 Webscraping is een techniek die automatisch data extraheert van websites~\autocite{Khder2021}. Deze data kan in verschillende formaten voorkomen, zoals HTML, JSON, XML en CSV. Webscraping heeft tal van toepassingen, waaronder:
@@ -34,7 +34,6 @@ Enkele voordelen van de traditionele webscraping manier zijn:
 \begin{itemize}
     \item \textbf{Eenvoudig}: Traditionele webscraping is een van de eenvoudigere methodes die met weinig technische kennis kan worden toegepast. Deze zijn eenvoudig in de zin dat je met zeer weinig code al een basis scraper kan bouwen. In codefragment \ref{code:example1} is een voorbeeld te zien van een eenvoudige traditionele webscraper, geschreven in de programmeertaal Python. Deze webscraper geeft de titel weer van de website die men wenst te scrapen.
 
-\begin{listing}
     \begin{lstlisting}[language=python, captionpos=b, caption={Een voorbeeld van een eenvoudige webscraper.}, label={code:example1}]
         # Importeer de nodige Python-bibliotheek
         import requests
@@ -59,7 +58,6 @@ Enkele voordelen van de traditionele webscraping manier zijn:
 
             print(title)
     \end{lstlisting}
-\end{listing}
 
     \item \textbf{Repliceerbaarheid}: De manier waarop de website wordt binnengehaald in deze traditionele webscrapers is voor iedere website hetzelfde, namelijk het ophalen van de HTML-code van de website . Dit zorgt ervoor dat deze scrapers makkelijk te hergebruiken zijn.
 \end{itemize}
@@ -320,7 +318,7 @@ Bij het bouwen van een traditionele webscraper  in Python is Beautiful Soup 4 du
         print(f" - {p.text}")
 \end{lstlisting}
 
-\begin{lstlisting}[language=text, caption={De output van code fragment \ref{code:example3}}, label={outuput:example1}]
+\begin{lstlisting}[caption={De output van code fragment \ref{code:example3}}, label={outuput:example1}]
     Titel van de pagina: Voorbeeld Pagina
     Header: Welkom op mijn website
     Introductieparagraaf: Dit is een voorbeeldpagina.

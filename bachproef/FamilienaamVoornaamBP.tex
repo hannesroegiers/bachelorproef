@@ -73,7 +73,10 @@
     showspaces=false,
     showstringspaces=false,
     showtabs=false,
-    tabsize=2
+    tabsize=2,
+    postbreak=\mbox{\textcolor{red}{$\hookrightarrow$}\space},
+    columns=fullflexible,
+    frame=single
 }
 
 \lstset{style=mystyle}
@@ -144,7 +147,7 @@
 % If you included tables and/or source code listings, uncomment the appropriate
 % lines.
 %\listoftables
-%\listoflistings
+\listoflistings
 
 % Als je een lijst van afkortingen of termen wil toevoegen, dan hoort die
 % hier thuis. Gebruik bijvoorbeeld de ``glossaries'' .
