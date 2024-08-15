@@ -10,7 +10,7 @@ In de digitale wereld van vandaag is data de sleutel tot succes. Bedrijven verza
 Deze enorme vraag naar kwalitatieve data drijft de ontwikkeling van nieuwe en innovatieve methodes voor dataverzameling. Er zijn vele manieren waarop er aan dataverzameling kan gedaan worden, deze studie focust zich op web scraping.
 
 \section{Webscraping}
-Webscraping is een techniek die automatisch data extraheert van websites~\autocite{Khder2021}. Deze data kan in verschillende formaten voorkomen, zoals HTML, JSON, XML en CSV. Webscraping heeft tal van toepassingen, waaronder:
+Webscraping is een techniek die via scripting data extraheert van websites~\autocite{Khder2021}. Deze data kan in verschillende formaten voorkomen, zoals HTML, JSON, XML en CSV. Webscraping heeft tal van toepassingen, waaronder:
 \begin{itemize}
     \item Data-extractie, dit is het verzamelen van data van websites voor diverse doeleinden,
     zoals marktonderzoek,prijsvergelijking en het verzamelen van recensies
@@ -23,7 +23,7 @@ Webscraping is een techniek die automatisch data extraheert van websites~\autoci
 \subsection{Traditionele web scraping}
 In dit hoofdstuk wordt traditionele webscraping  onderzocht als een techniek voor het extraheren van data van websites door het parsen van de HTML-code van websites. De focus ligt op het begrijpen van de werking van traditionele webscraping, het identificeren van de voor- en nadelen ervan, en het verkennen van enkele alternatieve methoden.
 ~
-Traditionele webscraping begint met het identificeren van de doelpagina die de gewenste data bevat. Vervolgens wordt de HTML-code van de doelpagina opgehaald via een HTTP-request. Deze stap kan worden uitgevoerd met de developer tools  in de browser, Postman of met de een van de meest gebruikte Python-bibliotheken requests \autocite{Nate2023}.  Na het verkrijgen van de HTML-code wordt deze geparsd om er de gewenste gegevens uit te halen. Dit kan gedaan worden met de Python-bibliotheek BeautifulSoup. De verkregen data kan daarna worden omgezet in verschillende data formaten zoals JSON, CSV en XML of het kan rechtstreeks  in een database of een ander bestandssysteem gestoken worden.
+Traditionele webscraping begint met het identificeren van de doelpagina die de gewenste data bevat. Vervolgens wordt de HTML-code van de doelpagina opgehaald via een HTTP-request. Deze stap kan worden uitgevoerd met de developer tools  in de browser, Postman of met een van de meest gebruikte Python-bibliotheken requests \autocite{Nate2023}.  Na het verkrijgen van de HTML-code wordt deze geparset om er de gewenste gegevens uit te halen. Dit kan gedaan worden met de Python-bibliotheek BeautifulSoup. De verkregen data kan daarna worden omgezet in verschillende data formaten zoals JSON, CSV en XML of het kan rechtstreeks  in een database of een ander bestandssysteem gestoken worden.
 \begin{figure}[h]
     \includegraphics[width=\linewidth]{graphics/webscraping2.png}
     \caption{De werking van een web scraper \autocite{Kinsta2022}}
@@ -52,9 +52,8 @@ Enkele voordelen van de traditionele webscraping manier zijn:
             soup = BeautifulSoup(page.content, 'html.parser')
 
             # Opzoeken van de titel van de opgehaalde url
-            title = str(soup.find("title"))
-            title = title.replace("<title>", "")
-            title = title.replace("</title>", "")
+            title = soup.find("title")
+            result = title.get_text()
 
             print(title)
     \end{lstlisting}
@@ -62,12 +61,12 @@ Enkele voordelen van de traditionele webscraping manier zijn:
     \item \textbf{Repliceerbaarheid}: De manier waarop de website wordt binnengehaald in deze traditionele webscrapers is voor iedere website hetzelfde, namelijk het ophalen van de HTML-code van de website . Dit zorgt ervoor dat deze scrapers makkelijk te hergebruiken zijn.
 \end{itemize}
 
-Deze eenvoudigheid komt echter niet zonder kost, hier zijn de nadelen van traditionele webscrapers:
+Deze eenvoud komt echter niet zonder kost, hier zijn de nadelen van traditionele webscrapers:
 
 \begin{itemize}
-    \item \textbf{Beperkte functionaliteit: }Traditionele webscrapingmethoden zijn beperkt tot het extraheren van gegevens die expliciet zijn opgenomen in de HTML-code van de website, waardoor ze niet in staat zijn om data te verzamelen die via dynamische scripts, zoals JavaScript, worden geladen of die zich achter interactieve elementen bevinden.
+    \item \textbf{Beperkte functionaliteit: }De oorspronkelijke en eerste webscrapingmethoden zijn beperkt tot het extraheren van gegevens die expliciet zijn opgenomen in de HTML-code van de website, waardoor ze niet in staat zijn om data te verzamelen die via dynamische scripts, zoals JavaScript, worden geladen of die zich achter interactieve elementen bevinden.
 
-    \item \textbf{Onderhoud}: Websites en dus ook de hun HTML-code veranderen voortdurend, waardoor webscraping scripts regelmatig moeten worden bijgewerkt zodat ze hun correcte werking behouden.
+    \item \textbf{Onderhoud}: Websites en dus ook hun HTML-code veranderen voortdurend, waardoor webscraping scripts regelmatig moeten worden bijgewerkt zodat ze hun correcte werking behouden.
 
     \item \textbf{Parsen}: Wanneer de HTML-structuur complex en/of niet consistent is, kan dit aanzienlijke problemen veroorzaken bij het parsen van HTML-code. Een inconsistente HTML-structuur zorgt ervoor dat de gezochte data mogelijk niet in dezelfde tag staat als op een vorige pagina van dezelfde website. Dit betekent dat dezelfde informatie op verschillende pagina's in verschillende HTML-elementen kan staan. Daarnaast kan de tag waarin de data is geplaatst, zich onder verschillende parent-tags bevinden. Deze variabiliteit compliceert het proces van gegevensextractie en vereist vaak extra inspanning en geavanceerde methoden om nauwkeurig en efficiënt data te kunnen verzamelen.
     De volgende twee code fragmenten~\ref{code:HTML1}  en~\ref{code:HTML2} maken gebruik van verschillende HTML-tags en andere klasse namen. Toch geven deze twee code fragmenten hetzelfde resultaat zoals in figuur \ref{fig:inconsistente HTML}  te zien is.
@@ -101,7 +100,7 @@ Deze eenvoudigheid komt echter niet zonder kost, hier zijn de nadelen van tradit
         \end{lstlisting}
     \end{listing}
 
-    \item \textbf{Efficiëntie}: De traditionele webscraping methode haalt de volledige webpagina binnen. Dit wil zeggen dat voor een webscraper die de prijs van één artikel ophaalt, de volledige webpagina wordt geëxtraheerd. Bij grote websites met veel webpagina's zorgt dit op 2 plaatsen voor vertraging. Eerst moet deze volledige webpagina opgehaald worden, daarna wordt deze geparset en dan pas dan kan men opzoek naar de data.
+    \item \textbf{Efficiëntie}: De traditionele webscraping methode haalt de volledige webpagina binnen. Dit wil zeggen dat voor een webscraper die de prijs van één artikel ophaalt, de volledige webpagina wordt geëxtraheerd. Bij grote websites met veel webpagina's zorgt dit op 2 plaatsen voor vertraging. Eerst moet deze volledige webpagina opgehaald worden, daarna wordt deze geparset en dan pas dan kan men op zoek naar de data.
 \end{itemize}
 
 Een alternatieve manier om aan webscraping te doen is aan de hand van API's. Websites bieden soms API's (Application Programming Interfaces) aan die het mogelijk maken om data te verzamelen in een gestructureerd formaat~\autocite{Ayushi2021}. API's zijn ontworpen voor developers en bieden een gestandaardiseerde manier om data te communiceren.
@@ -109,9 +108,6 @@ Een alternatieve manier om aan webscraping te doen is aan de hand van API's. Web
 \subsection{API webscraping}
 
 Een van de belangrijkste voordelen van API's is hun gebruiksgemak. Ze bieden een gestandaardiseerde interface waarmee gebruikers eenvoudig toegang kunnen krijgen tot de gewenste gegevens. Dit maakt het proces van gegevensverzameling efficiënter en toegankelijker, zelfs voor gebruikers met beperkte technische vaardigheden. Bovendien worden API's over het algemeen onderhouden door de website-eigenaar, wat de betrouwbaarheid van de gegevensstroom verhoogt in vergelijking met webscraping, waarbij de structuur van de website kan veranderen zonder voorafgaande kennisgeving, wat leidt tot inconsistenties in de gegevens. Een ander voordeel van API's is hun snelheid. In vergelijking met webscraping kunnen API's gegevens sneller leveren doordat ze directe toegang hebben tot de backend van de website, waardoor de latentie wordt verminderd en de totale efficiëntie van het verzamelproces wordt verbeterd.
-
-Een ander voordeel van API's is hun snelheid. In vergelijking met webscraping kunnen API's gegevens sneller leveren doordat ze directe toegang hebben tot de backend van de website, waardoor de latentie wordt verminderd en de algehele efficiëntie van het verzamelproces wordt verbeterd.
-
 \vspace{5mm} %5mm vertical space
 
 Ondanks deze voordelen zijn er echter ook nadelen verbonden aan het gebruik van API's. Een van de belangrijkste beperkingen is de beschikbaarheid ervan. Niet alle websites bieden API's aan, dit limiteert de mogelijkheden voor gegevensverzameling , vooral bij het werken met minder bekende bronnen.
@@ -120,7 +116,7 @@ Een ander nadeel van het gebruik van API's is het vereiste authenticatieproces. 
 
 \subsection{Netwerkverkeersanalyse}
 Netwerkverkeersanalyse, ook bekend als packet sniffing of network sniffing, is een techniek waarbij gegevenspakketten die over een netwerk worden verzonden, worden onderschept en geanalyseerd~\autocite{Chapple2018}. Dit proces maakt het mogelijk om inzicht te krijgen in de interacties tussen een client (bijvoorbeeld een webbrowser) en een server (bijvoorbeeld een webserver).
-Bij netwerkverkeersanalyse worden tools zoals Wireshark of tcpdump gebruikt om netwerkpakketten vast te leggen en te inspecteren. Deze pakketten bevatten verschillende soorten gegevens, waaronder HTTP-verzoeken en -reacties, die essentieel zijn voor het begrijpen van de onderliggende communicatiestromen van webapplicaties. In figuur \ref{fig:networksniffing} is een visuele representatie te zien over network sniffing.
+Bij netwerkverkeersanalyse worden tools zoals Wireshark of tcpdump gebruikt om netwerkpakketten vast te leggen en te inspecteren. Deze pakketten bevatten verschillende soorten gegevens, waaronder HTTP-verzoeken en -reacties, die essentieel zijn voor het begrijpen van de onderliggende communicatiestromen van webapplicaties. In figuur \ref{fig:networksniffing} is een visuele representatie te zien aangaande network sniffing.
 \begin{figure}[h]
     \centering
     \includegraphics[width=\linewidth]{graphics/networksniffing.png}
@@ -130,7 +126,7 @@ Bij netwerkverkeersanalyse worden tools zoals Wireshark of tcpdump gebruikt om n
 
 \subsubsection{Netwerkverkeersanalyse toepassen op web scraping}
 Bij het bezoeken van een website vindt er een complexe uitwisseling van data plaats tussen de browser van de gebruiker en de server. Deze uitwisseling, die bekend staat als netwerkverkeer, bestaat uit een reeks HTTP-requests en -responses.
-Elke HTTP-request wordt door de browser verstuurd en bevat een specifiek verzoek voor een bestand, zoals een JSON-bestand, XML-bestand, HTML-bestand, CSS-stylesheet, JavaScript-bestand of afbeelding. De server ontvangt deze request en genereert een HTTP-response die de gevraagde data bevat. Het proces kan als volgt worden gestructureerd:
+Elke HTTP-request wordt door de browser verstuurd en bevat een specifiek verzoek voor een bestand, zoals een JSON-bestand, XML-bestand, HTML-bestand, CSS-stylesheet, JavaScript-bestand of afbeelding. De server ontvangt dit request en genereert een HTTP-response die de gevraagde data bevat. Het proces kan als volgt worden gestructureerd:
 \begin{enumerate}
     \item \textbf{Initiatie van een HTTP-request:} Wanneer een gebruiker een URL in de browser invoert of een hyperlink volgt, stuurt de browser een HTTP-request naar de server. Deze request bevat informatie over de gevraagde resource, zoals het type bestand en de locatie ervan op de server.
 
@@ -254,9 +250,9 @@ Beautiful Soup is een Python library die speciaal ontworpen is om HTML en XML do
 Hoewel Beautiful Soup 4 een krachtige tool is voor webscraping, zijn er enkele beperkingen waarmee rekening moet worden gehouden:
 
 \begin{itemize}
-    \item \textbf{Dynamische inhoud:} Beautiful Soup 4 is effectief voor het parsen van statische HTML-pagina's. Echter, voor websites die dynamische inhoud genereren via JavaScript, zoals Single Page Applications, kan Beautiful Soup deze inhoud niet direct parsen. Hiervoor kan men gebruik maken van de Python-bibliotheek Selenium.
+    \item \textbf{Dynamische inhoud:} Beautiful Soup 4 is effectief voor het parsen van statische HTML-pagina's. Echter, voor websites die dynamische inhoud genereren via JavaScript, zoals Single Page Applications, kan Beautiful Soup deze inhoud niet direct parsen. Hiervoor kan men bijvoorbeeld gebruik maken van de Python-bibliotheek Selenium.
 
-    \item \textbf{Complexiteit van de website: } Websites met zeer complexe HTML-structuren, veel geneste elementen en aangepaste tags kunnen moeilijk te parsen zijn, vooral bij een gebrek aan duidelijke structuren.
+    \item \textbf{Complexiteit van de website: } Websites met zeer complexe HTML-structuren, veel geneste elementen en aangepaste tags kunnen moeilijk te parsen zijn, vooral bij gebrek aan duidelijke structuren.
 \end{itemize}
 
 Bij het bouwen van een traditionele webscraper  in Python is Beautiful Soup 4 dus een must-have Python-bibliotheek. Het is echter wel belangerijk om de beperkingen van de Python-bibliotheek te begrijpen. In codefragment \ref{code:example3} worden de besproken functionaliteiten toegepast.
@@ -338,7 +334,7 @@ Bij het bouwen van een traditionele webscraper  in Python is Beautiful Soup 4 du
 Selenium is een open-source framework voor het automatiseren van webapplicatietests. Het kan echter ook effectief worden gebruikt voor webscraping. Selenium ondersteunt meerdere programmeertalen, waaronder Python, Java, C#, en Ruby. De tool biedt een interface om browsers te besturen, waardoor gebruikers webpagina's kunnen laden, elementen kunnen identificeren en interacties kunnen uitvoeren, zoals klikken en formulierinvoer. De Selenium Python-bibliotheek heeft een aantal kernfunctionaliteiten \autocite{Muthukadan2011}:
 
 \begin{itemize}
-    \item \textbf{Multi-browser ondersteuning:} Selenium ondersteunt verschillende browsers, zoals Chrome, Firefox, Safari en Edge, voor ieder van deze browsers zijn er drivers beschikbaar. Deze drivers kunnen gebruikt worden zoals in codefragment \ref{code:example4}. Dit maakt het mogelijk om scraping-taken uit te voeren in een omgeving die lijkt op die van een echte gebruiker.
+    \item \textbf{Multi-browser ondersteuning:} Selenium ondersteunt verschillende browsers, zoals Chrome, Firefox, Safari en Edge. voor ieder van deze browsers zijn er drivers beschikbaar. Deze drivers kunnen gebruikt worden zoals in codefragment \ref{code:example4}. Dit maakt het mogelijk om scraping-taken uit te voeren in een omgeving die lijkt op die van een echte gebruiker.
 
     \begin{lstlisting}[language=Python, caption={voorbeeld Selenium driver}, captionpos=b, label=code:example4]
         from selenium import webdriver
@@ -350,7 +346,7 @@ Selenium is een open-source framework voor het automatiseren van webapplicatiete
 
     \item \textbf{Complexere interacties:} Selenium kan complexe gebruikersinteracties simuleren, zoals het klikken op knoppen, het invullen van formulieren en het navigeren door meerdere pagina's. Dit maakt het mogelijk om gegevens te verzamelen van websites die een bepaalde volgorde van acties vereisen.
 
-    \item \textbf{Rendering van JavaScript:} Veel e websites maken gebruik van JavaScript om de gebruikersinterface te renderen. Selenium kan de browser instrueren om de pagina volledig te renderen, waardoor de volledige HTML-structuur beschikbaar komt voor scraping.
+    \item \textbf{Rendering van JavaScript:} Veel websites maken gebruik van JavaScript om de gebruikersinterface te renderen. Selenium kan de browser instrueren om de pagina volledig te renderen, waardoor de volledige HTML-structuur beschikbaar komt voor scraping.
 
 \end{itemize}
 
@@ -359,7 +355,7 @@ Ondanks zijn veelzijdigheid heeft Selenium ook enkele beperkingen:
 \begin{itemize}
     \item \textbf{Snelheid:} Selenium is doorgaans trager dan andere scraping-methoden. Dit komt doordat het een volledige browser moet opstarten en elke pagina volledig moet laden. Hierdoor kan de verwerkingstijd aanzienlijk toenemen, vooral bij complexe webpagina's.
 
-    \item \textbf{Resource-intensief:} Het uitvoeren van Selenium-scripts vereist veel systeembronnen. Dit is met name problematisch bij het uitvoeren van grote aantallen requests, wat kan leiden tot verhoogde belasting van CPU en geheugen. Hierdoor kunnen de prestaties van het systeem negatief beïnvloed worden.
+    \item \textbf{Resource-intensief:} Het uitvoeren van Selenium-scripts vereist veel systeembronnen. Dit is met name problematisch bij het uitvoeren van grote aantallen requests, wat kan leiden tot een verhoogde belasting van CPU en geheugen. Hierdoor kunnen de prestaties van het systeem negatief beïnvloed worden.
 
     \item \textbf{Browser-afhankelijkheid:} Selenium-scripts zijn afhankelijk van specifieke browserfuncties. Dit betekent dat scripts mogelijk niet uniform werken op alle browsers. Incompatibiliteit tussen verschillende browsers kan leiden tot inconsistent gedrag van de scripts, wat de betrouwbaarheid en robuustheid van de automatisering kan verminderen.
 \end{itemize}
@@ -414,7 +410,7 @@ Actieve technieken richten zich op het actief blokkeren van webscrapers. Deze me
 \end{itemize}
 
 \section{Ethische aspecten}
-Webscraping, het proces waarbij geautomatiseerde scripts of programma's gegevens van websites verzamelen, biedt enorme mogelijkheden voor data-analyse. Echter, het brengt ook diverse ethische uitdagingen met zich mee die aandacht vereisen. In dit hoofdstuk worden de belangrijkste ethische kwesties rondom webscraping besproken, waaronder privacy, intellectueel eigendom en misbruik. Verder worden ethische richtlijnen en best practices besproken om verantwoord gebruik van webscraping te waarborgen.
+Webscraping, het proces waarbij geautomatiseerde scripts of programma's gegevens van websites verzamelen, biedt enorme mogelijkheden voor data-analyse. Echter, het brengt ook diverse ethische uitdagingen met zich mee die aandacht vereisen. In dit hoofdstuk worden de belangrijkste ethische kwesties in verband met webscraping besproken, waaronder privacy, intellectuele eigendom en misbruik. Verder worden ethische richtlijnen en best practices besproken om verantwoord gebruik van webscraping te waarborgen.
 
 \subsection{Privacy}
 \subsubsection{Inbreuk op de privacy van gebruikers}
@@ -424,7 +420,7 @@ Webscraping kan leiden tot het verzamelen van persoonlijke gegevens zonder expli
 Wetgevingen zoals de Algemene Verordening Gegevensbescherming (AVG) in de EU en de California Consumer Privacy Act (CCPA) in de VS stellen strikte eisen aan de verzameling en verwerking van persoonlijke gegevens. Deze wetgevingen zijn ook van toepassing op webscraping en vereisen dat organisaties transparant zijn over welke gegevens zij verzamelen, hoe deze worden gebruikt en dat zij toestemming van de gebruikers verkrijgen.
 
 \subsubsection{Anoniemisering en pseudonimisering}
-Om de privacy te beschermen, kunnen technieken zoals anoniemisering en pseudonimisering worden toegepast. Anoniemisering verwijdert alle identificeerbare informatie uit de dataset, terwijl pseudonimisering de identificeerbare informatie vervangt door een pseudoniem. Hoewel deze technieken de privacy verbeteren, zijn ze niet zonder beperkingen, omdat geavanceerde methoden soms nog steeds kunnen leiden tot heridentificatie van individuen.
+Om de privacy te beschermen, kunnen technieken zoals anonimisering en pseudonimisering worden toegepast. Anonimisering verwijdert alle identificeerbare informatie uit de dataset, terwijl pseudonimisering de identificeerbare informatie vervangt door een pseudoniem. Hoewel deze technieken de privacy verbeteren, zijn ze niet zonder beperkingen, omdat geavanceerde methoden soms nog steeds kunnen leiden tot heridentificatie van individuen.
 
 \subsection{Intellectueel Eigendom}
 \subsubsection{Copyright en auteursrecht}
@@ -434,7 +430,7 @@ Het kopiëren en hergebruiken van data van websites roept juridische vragen op m
 Websites hanteren vaak Terms of Service (ToS) die expliciet regels en beperkingen vastleggen omtrent webscraping. Het niet naleven van deze voorwaarden kan juridische gevolgen hebben, zoals toegang tot de website verliezen of juridische claims van de website-eigenaar.
 
 \subsubsection{Databasebescherming}
-Naast auteursrecht kunnen databases specifieke juridische bescherming genieten onder wetten zoals de Europese Databankenrichtlijn. Webscraping kan inbreuk maken op deze bescherming, vooral wanneer het systematisch en op grote schaal gebeurt.
+Naast auteursrecht kunnen databases specifieke juridische bescherming genieten onder wetten zoals de Europese Databankenrichtlijn. Webscraping kan inbreuk plegen op deze bescherming, vooral wanneer het systematisch en op grote schaal gebeurt.
 
 \subsection{Systeembelasting}
 \subsubsection{Overbelasting van servers}
@@ -454,4 +450,4 @@ Webscraping moet zo worden uitgevoerd dat de privacy van gebruikers minimaal wor
 Er zijn bestaande ethische codes voor onderzoekers en ontwikkelaars~\autocite{Don2018} die richtlijnen bieden voor verantwoord gebruik van webscraping. Deze codes benadrukken het belang van eerlijkheid, transparantie en respect voor privacy en intellectueel eigendom.
 \\
 \\
-De belangrijkste ethische uitdagingen van webscraping omvatten privacy-inbreuken, juridische kwesties rondom intellectueel eigendom, het potentiële misbruik van gegevens en de impact op systeemprestaties. Het naleven van ethische richtlijnen en best practices is cruciaal om verantwoord webscraping te waarborgen.
+De belangrijkste ethische uitdagingen van webscraping omvatten privacy-inbreuken, juridische kwesties in verband met intellectueel eigendom, het potentiële misbruik van gegevens en de impact op systeemprestaties. Het naleven van ethische richtlijnen en best practices is cruciaal om verantwoord webscraping te waarborgen.

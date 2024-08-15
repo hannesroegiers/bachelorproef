@@ -26,26 +26,26 @@
 %% Maak voor elke fase (behalve het literatuuronderzoek) een NIEUW HOOFDSTUK aan
 %% en geef het een gepaste titel.
 
-In dit hoofdstuk wordt de methodologie besproken die toegepast is om dit onderzoek op een effectieve manier uit te voeren. De volgende secties beschrijven de fasen die uitgevoerd werden voor dit onderzoek. Er wordt bij iedere fase gefocussed op een specifiek doel en draagt bij aan het ontwikkelen van een web scraper die gebruik maakt van netwerkverkeersanalyse.
+In dit hoofdstuk wordt de methodologie besproken die toegepast is om dit onderzoek op een effectieve manier uit te voeren. De volgende secties beschrijven de fasen die uitgevoerd werden voor dit onderzoek. Er wordt bij iedere fase gefocust op een specifiek doel en iedere fase draagt bij aan het ontwikkelen van een web scraper die gebruik maakt van netwerkverkeersanalyse.
 
 \section{Literatuurstudie}
 De initiële fase van dit onderzoek richt zich op een grondige literatuurstudie om in-zicht te krijgen in bestaande netwerkverkeersanalyse tools en Python-bibliotheken. Het onderzoek omvat een gedetailleerde analyse van de beschikbare Python-bibliotheken en tools, waarbij functionaliteit, gebruiksgemak en efficiëntie worden onderzocht. Deze literaire verkenning legt de basis voor het identificeren van geschikte tools voor web scraping in de verdere stadia van het onderzoek. De onderzochte Python-bibliotheken worden beschreven in de stand van zaken. Deze beschrijvingen omvatten een uitleg van de bibliotheek en een oplijsting van de voor- en nadelen ervan. Dit werd gedaan aan de hand van de officiële documentatie.
 
 \section{Voorbereiding Proof of Concept}
-Voor dat Proof of Concept kan worden uitgevoerd is er een grondige kennis nodig van de gekozen Python-bibliotheken. Het is ook belangrijk dat de doel website grondig verkent wordt, zo kan er bepaald worden welke delen van de website de scraper zicht op moet richten. Voor het verkrijgen van een diepere kennis van de gekozen Python-bibliotheken wordt gebruik de stand van zaken die in de vorige fase werd opgesteld. Om de doel website te verkennen wordt uitsluitend gebruik gemaakt van de developer tools in de browser.
+Voor de Proof of Concept kan worden uitgevoerd is er een grondige kennis nodig van de gekozen Python-bibliotheken. Het is ook belangrijk dat de doel website grondig verkend wordt, zo kan er bepaald worden welke delen van de website de scraper zich moet richten. Voor het verkrijgen van een diepere kennis van de gekozen Python-bibliotheken wordt gebruik gebruik gemaakt van de stand van zaken die in de vorige fase werd opgesteld. Om de doel website te verkennen wordt uitsluitend gebruik gemaakt van de developer tools in de browser.
 
 \section{Proof of Concept}
 Het doel van de Proof of Concept is het ontwikkelen van een Python script dat, aan de hand van netwerkverkeersanalyse, de data van de doelwebsite extraheert.
 Het bouwen van de Proof of Concept zal in enkele fasen verlopen:
 \begin{itemize}
-    \item \textbf{Verkenningsfase:} In deze fase wordt de website verkent. De data die moet worden gescraped, wordt gelokaliseerd op de website. 
-    
-    \item \textbf{Analysefase:} Er wordt in de tweede fase gekeken naar de structuur van de HTML-code en al het netwerkverkeer dat tussen de website(client) en de server loopt. Op basis van deze analyse wordt bepaalt welke soort web scraping het best van toepassing is.
-    
-    \item \textbf{Ontwikkelingsfase:} Deze fase bestaat uit het ontwikkelen van het Python script dat de web scraping uitvoert.
-    
+    \item \textbf{Verkenningsfase:} In deze fase wordt de website verkend. De data die moet worden gescraped, wordt gelokaliseerd op de website.
+
+    \item \textbf{Analysefase:} Er wordt in de tweede fase gekeken naar de structuur van de HTML-code en al het netwerkverkeer dat tussen de website(client) en de server loopt. Op basis van deze analyse wordt bepaalt of er gebruikt gemaakt kan worden van de originele web scraping methode of er nood is aan meer geavandceerde manieren zoals het gebruik maken van netwerkverkeersanalyse.
+
+    \item \textbf{Ontwikkelingsfase:} Deze fase bestaat uit het ontwikkelen van het Python script dat de web scraping uitvoert in het geval dat meer geavanceerde manieren nodig zijn om de data te extraheren. Python scripts om eenvoudige websites te scrapen zijn tegenwoordig alom te vinden op het internet.
+
 \end{itemize}
- De resultaten van dit onderzoek zijn: 
+ De resultaten van dit onderzoek zijn:
 \begin{itemize}
     \item Een web scraper (Python script)
     \item Een gefilterde lijst met het netwerkverkeer van de website.
@@ -53,4 +53,4 @@ Het bouwen van de Proof of Concept zal in enkele fasen verlopen:
 \end{itemize}
 
 \section{Conclusie}
-De aflsuitende fase van het onderzoek omvat de analyse van de bevindingen uit zowel de literatuurstudie als de Proof of Concept fase. Er zullen waardevolle inzichten verschaft worden over de haalbaarheid, voordelen en mogelijke limitaties van web scrapen via netwerkverkeersanalyse. 
+De aflsuitende fase van het onderzoek omvat de analyse van de bevindingen uit zowel de literatuurstudie als de Proof of Concept fase. Er zullen waardevolle inzichten verschaft worden over de haalbaarheid, voordelen en mogelijke limitaties van web scrapen via netwerkverkeersanalyse.
