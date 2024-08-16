@@ -4,33 +4,42 @@
 
 \chapter{\IfLanguageName{dutch}{Inleiding}{Introduction}}%
 \label{ch:inleiding}
-
-De inleiding moet de lezer net genoeg informatie verschaffen om het onderwerp te begrijpen en in te zien waarom de onderzoeksvraag de moeite waard is om te onderzoeken. In de inleiding ga je literatuurverwijzingen beperken, zodat de tekst vlot leesbaar blijft. Je kan de inleiding verder onderverdelen in secties als dit de tekst verduidelijkt. Zaken die aan bod kunnen komen in de inleiding~\autocite{Pollefliet2011}:
-
-\begin{itemize}
-  \item context, achtergrond
-  \item afbakenen van het onderwerp
-  \item verantwoording van het onderwerp, methodologie
-  \item probleemstelling
-  \item onderzoeksdoelstelling
-  \item onderzoeksvraag
-  \item \ldots
-\end{itemize}
-
+In een tijdperk waarin data wordt beschouwd als het nieuwe digitale goud, groeit de relevantie van webscraping snel. Webscraping is een techniek die gericht is op het geautomatiseerd verzamelen van gegevens van websites. Het belang ervan is toegenomen dankzij de erkenning van data als een drijvende kracht achter zakelijke strategieën, wetenschappelijk onderzoek en artificiële intelligentie~\autocite{RizaOeztuerk2023}
+\\ \\
+Steeds meer bedrijven en organisaties realiseren zich de waarde van nauwkeurige en actuele data om concurrerend te blijven en in te spelen op veranderende marktomstandigheden. In dit tijdperk van datagedreven besluitvorming biedt webscraping een krachtige tool om relevante en real-time gegevens te verkrijgen.
+\\ \\
+Naast de groeiende vraag naar gegevens voor zakelijke toepassingen, stimuleert webscraping ook technologische innovatie. De vooruitgang in technologieën zoals artificiële intelligentie, machine learning en big data-analyse vergroot de mogelijkheden voor het gebruik van de verzamelde data. Traditionele webscrapingmethoden, die voornamelijk gebaseerd zijn op het parsen van HTML-code, blijken echter vaak inefficiënt, inflexibel en gevoelig voor anti-scrapingmaatregelen. Een innovatieve benadering is netwerkverkeersanalyse. Door het netwerkverkeer tussen een browser en een website te analyseren, kan data in real-time worden geëxtraheerd, zelfs als deze niet expliciet in de HTML-code staat. Dit opent de deur naar een nieuw niveau van efficiëntie en flexibiliteit in webscraping.
+\\ \\
+Deze paper richt zich specifiek op personen die door middel van scripting op zoek zijn naar kwalitatieve data. Hierbij wordt ingezoomd op de mogelijkheden van webscraping via netwerkverkeersanalyse, met bijzondere aandacht voor het extraheren van JSON-objecten. Door deze benadering kunnen ontwikkelaars efficiëntere en flexibelere methoden inzetten om waardevolle gegevens te verzamelen en te gebruiken.
 \section{\IfLanguageName{dutch}{Probleemstelling}{Problem Statement}}%
 \label{sec:probleemstelling}
-
-Uit je probleemstelling moet duidelijk zijn dat je onderzoek een meerwaarde heeft voor een concrete doelgroep. De doelgroep moet goed gedefinieerd en afgelijnd zijn. Doelgroepen als ``bedrijven,'' ``KMO's'', systeembeheerders, enz.~zijn nog te vaag. Als je een lijstje kan maken van de personen/organisaties die een meerwaarde zullen vinden in deze bachelorproef (dit is eigenlijk je steekproefkader), dan is dat een indicatie dat de doelgroep goed gedefinieerd is. Dit kan een enkel bedrijf zijn of zelfs één persoon (je co-promotor/opdrachtgever).
+De meest gebruikte methode om aan web scrapen te doen, is het parsen van de HTML-code van een website. Bij grote en complexe websites wordt de inhoud vaak dynamisch geladen, dit kan als gevolg hebben dat bepaalde data niet terug te vinden is in de HTML-code. Daarom wordt in dit onderzoek gekeken naar het ontwikkelen van een web scraping methode die deze data wel kan extraheren.
 
 \section{\IfLanguageName{dutch}{Onderzoeksvraag}{Research question}}%
 \label{sec:onderzoeksvraag}
+Het onderzoek richt zich op het analyseren van een website's netwerkverkeer door middel van web scraping. De centrale onderzoeksvraag is: ''Hoe kan web scraping worden uitgevoerd door middel van netwerkverkeersanalyse?''. De centrale onderzoeksvraag kan nog verder worden onderverdeeld in volgende deelvragen:
+\begin{itemize}
+    \item Hoe kan gestructureerde data worden geëxtraheerd uit het netwerkverkeer van een website?
 
-Wees zo concreet mogelijk bij het formuleren van je onderzoeksvraag. Een onderzoeksvraag is trouwens iets waar nog niemand op dit moment een antwoord heeft (voor zover je kan nagaan). Het opzoeken van bestaande informatie (bv. ``welke tools bestaan er voor deze toepassing?'') is dus geen onderzoeksvraag. Je kan de onderzoeksvraag verder specifiëren in deelvragen. Bv.~als je onderzoek gaat over performantiemetingen, dan 
+    \item Welke voordelen heeft web scraping via netwerkverkeersanalyse in vergelijking met de originele web scraping methode?
+
+    \item Wat is de invloed van netwerkfluctuaties op de uitvoeringstijd van een web scraper die gebruik maakt van netwerkverkeersanalyse.
+\end{itemize}
+
+
 
 \section{\IfLanguageName{dutch}{Onderzoeksdoelstelling}{Research objective}}%
 \label{sec:onderzoeksdoelstelling}
+Het doel van dit onderzoek is het ontwikkelen van een methode om gestructureerde data van een website te extraheren. Het onderzoek is gericht op personen in het vakgebied Data Engineering met focus op web scraping. Het uitwerken van dit onderzoek zal gebeuren aan de hand van een Proof of Concept, in de vorm van een Python-script. De verwachte resultaten van dit onderzoek zijn:
+\begin{itemize}
+    \item Een Python-script dat gestructureerde data uit het netwerkverkeer van een website kan halen.
 
-Wat is het beoogde resultaat van je bachelorproef? Wat zijn de criteria voor succes? Beschrijf die zo concreet mogelijk. Gaat het bv.\ om een proof-of-concept, een prototype, een verslag met aanbevelingen, een vergelijkende studie, enz.
+    \item Een praktische beschrijving over hoe deze Proof of Concept kan nagebootst worden.
+
+    \item Een dieper inzicht in de werking van beide web scrapers en het netwerkverkeer van websites.
+\end{itemize}
+
+Een conclusie zal worden gevormd op basis van de resultaten die het onderzoekt verschaft.
 
 \section{\IfLanguageName{dutch}{Opzet van deze bachelorproef}{Structure of this bachelor thesis}}%
 \label{sec:opzet-bachelorproef}

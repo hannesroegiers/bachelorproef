@@ -265,6 +265,67 @@ De zoekwoorden die in bovenstaand code-fragment~\ref{code:poc8} worden gebruikt,
 bespreken van de resultaten. Grafiek die de duur van de scraper toont en hoelang elk deel duurde (ophalen van de requests en het verwerken ervan). Ik ga deze scraper op een aantal paginas van de website laten lopen zodat er meer tijds data is om mij op te baseren.
 \\\\
 
+Het resultaat van deze Proof of Concept is een webscraper die door middel van netwerkverkeersanalyse op zoek gaat naar de gestructureerde data die op de website beschikbaar is. Dit Python-script automatiseert het proces door de URL's in de HTTP-verzoeken te identificeren die de website gebruikt om de benodigde gegevens op te halen. Hierdoor is het niet langer nodig om het netwerkverkeer handmatig te analyseren, wat zowel tijd bespaart als de nauwkeurigheid van de gegevensverzameling verbetert.
+De uitvoeringstijd van dit Python-script is nauwkeurig gemeten en opgedeeld in drie afzonderlijke fasen. In de eerste fase wordt het netwerkverkeer opgehaald, in de tweede fase wordt dit verkeer gefilterd, en in de derde fase wordt de inhoud van de gevonden URL's geanalyseerd. Tijdens fase 1 en 3 worden HTTP-verzoeken verzonden, terwijl in fase 2 de data uitsluitend lokaal wordt verwerkt.
+\\ \\
+De figuur~\ref{fig:time_graph} geeft de uitvoeringstijd van de web scraper weer, gemeten in seconden, er zijn op de grafiek 50 metingen te zien. Elk punt op de x-as vertegenwoordigt een enkele iteratie van de web scraper. De uitvoeringstijd is onderverdeeld in vier componenten: sectie 1 (het ophalen van het netwerkverkeer), sectie 2 (het filteren van het netwerkverkeer), sectie 3 (het analyseren van de URL-inhoud), en de totale tijd, die de som is van deze drie secties.
+In de grafiek zijn vier duidelijke pieken zichtbaar, voornamelijk in secties 1 en 3. In sectie 2 ontbreken deze pieken echter, wat te verklaren is doordat sectie 2 geen HTTP-verzoeken verstuurt. Hierdoor wordt deze sectie niet beïnvloed door externe factoren zoals netwerksnelheid of serverrespons, wat in tegenstelling staat tot de secties 1 en 3.
+\\ \\
+De pieken in secties 1 en 3 wijzen erop dat de variatie in uitvoeringstijd grotendeels wordt bepaald door de snelheid van de server en de website waarmee de scraper communiceert. Dit wordt verder ondersteund door de standaarddeviatie in figuur~\ref{fig:time_table} De standaarddeviatie in secties 1 en 3 is namelijk aanzienlijk hoger dan die in sectie 2, wat de invloed van externe factoren op de uitvoeringstijd bevestigt.
+\begin{figure}[ht]
+\pgfplotstableread[col sep=comma,]{../times2.csv}\datatable
+\begin{tikzpicture}
+   \begin{axis}[
+       width=\textwidth,
+       height=10cm,
+       xtick=data,
+       xticklabels from table={\datatable}{x-axis},
+       x tick label style={font=\normalsize, rotate=35, anchor=east},
+       legend style={at={(0.98,0.3)},anchor=south east},
+       ylabel={time(s)},
+       xlabel={Iteraties van de web scraper}]
+
+    \addplot[blue!80 ] table [x expr=\coordindex, y={Section 1}] {\datatable};
+    \addlegendentry{Sectie 1}
+
+    \addplot[red!80 ] table [x expr=\coordindex, y={Section 2}] {\datatable};
+    \addlegendentry{Sectie 2}
+
+    \addplot[green!80 ] table [x expr=\coordindex, y={Section 3}] {\datatable};
+    \addlegendentry{Sectie 3}
+
+    \addplot[orange!80 ] table [x expr=\coordindex, y={Total}] {\datatable};
+    \addlegendentry{Totaal}
+
+%    \addplot [dashed, thin, black] coordinates {(2,0) (2,10)};
+%    \addplot [dashed, thick, black] coordinates {(11,0) (11,10)};
+%        \addplot [dashed, thick, black] coordinates {(36,0) (36,10)};
+
+   \end{axis}
+\end{tikzpicture}
+\caption{Tijd in seconden per iteratie van de web scraper.}
+\label{fig:time_graph}
+\end{figure}
+\\ \\
+In tabel~\ref{fig:time_table} zijn een aantal statistische conclusies te zien over de uitvoeringstijd van de Proof of Concept. De tabel geeft het gemiddelde, de mediaan, het minimum en maximum, evenals de standaarddeviatie in percentages voor de verschillende secties (Sectie 1, Sectie 2, Sectie 3) en voor de totale uitvoeringstijd. Deze statistieken geven een completer beeld van de verzamelde data.
+
+\begin{table}[ht]
+    \centering
+    \renewcommand{\arraystretch}{1.5}
+    \setlength{\tabcolsep}{12pt}
+\begin{tabular}{>{\columncolor[HTML]{4CA2D5}}ccccc}
+        \rowcolor[HTML]{4CA2D5}
+        & \textbf{Sectie 1} & \textbf{Sectie 2} & \textbf{Sectie 3} & \textbf{Totaal} \\ \hline
+        \textbf{Gemiddelde} & 5.15        & 0.01        & 0.85        & 6.02        \\ \hline
+        \textbf{Mediaan}  & 5.04        & 0.01        & 0.78        & 5.85        \\ \hline
+        \textbf{Minimum}     & 4.76        & 0.01        & 0.71        & 5.53        \\ \hline
+        \textbf{Maximum}     & 8.29        & 0.01        & 2.39        & 9.59        \\ \hline
+        \textbf{Standaarddeviatie(\%)}     &10.32        &4.39        &33.90        &11.99     \\ \hline
+    \end{tabular}
+\caption{Tijd statistieken voor de Proof of Concept.}
+\label{fig:time_table}
+\end{table}
+
 
 
 
