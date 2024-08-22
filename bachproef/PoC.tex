@@ -4,7 +4,7 @@
 Dit deel van het onderzoek stelt een Proof of Concept voor die zich richt op het web scrapen van het netwerkverkeer van een website zodat de gestructureerde data die verstuurd wordt van de server kan onderschept worden. Sommige van deze bestanden die de server verstuurt, bevatten de gestructureerde data die de website gebruikt om zijn inhoud dynamisch te genereren. In deze gestructureerde data is vaak meer informatie te vinden dan op de website getoond wordt. Dit zorgt voor een verhoogde kwaliteit van verzamelde data. Het vergt ook minder verwerkingscapaciteit van de machine waarop de scraper uitgevoerd wordt omdat de HTML-code niet geparsed hoeft te worden. De Proof of Concept bestaat uit een Python script.
 
 \section{Vereisten}
-Het uitvoeren van deze Proof of Concept vereist bepaalde software op het systeem. De vereiste software zijn:
+Het uitvoeren van deze Proof of Concept vereist bepaalde software op het systeem. De vereiste software is:
 \begin{itemize}
     \item Python \footnote{\url{https://www.python.org/downloads/}}
     \item De package manager pip~\footnote{\url{https://pip.pypa.io/en/stable/installation/}}
@@ -35,17 +35,17 @@ Om de virtuele Python omgeving te activeren op een Windows machine moet het comm
     $ source myvenv/bin/activate
 \end{lstlisting}
 
-Om de gebruikte Python-bibliotheken te installeren moet het commando \ref{cmd:req.txt} uitgevoerd worden. het bestand \texttt{requirements.txt} is te vinden op de github-pagina \footnote{\url{https://github.com/hannesroegiers/bachelorproef/tree/main/PoC}}van deze Proof of Concept. Dit bestand bevat de nodige Python-bibliotheken met de gebruikte versie.
+Om de gebruikte Python-bibliotheken te installeren moet het commando \ref{cmd:req.txt} uitgevoerd worden. Het bestand \texttt{requirements.txt} is te vinden op de github-pagina \footnote{\url{https://github.com/hannesroegiers/bachelorproef/tree/main/PoC}}van deze Proof of Concept. Dit bestand bevat de nodige Python-bibliotheken met de gebruikte versie.
 \begin{lstlisting}[language=bash, label={cmd:req.txt}, caption={Het commando om de nodige Python-bibliotheken te installeren}]
     pip install -r requirements.txt
 \end{lstlisting}
 
 \section{Verkenning}
-Op de doel website\footnote{\url{https://www.oddsportal.com/football/belgium/jupiler-pro-league/}} zijn een aantal voetbal wedstrijden te zien. Naast iedere wedstrijd staan 3 kolommen zoals te zien in \ref{fig:website1}. De cijfers(betting odds voor de wedstrijden) die in deze kolommen staan zijn de data die de scraper gaat proberen te extraheren.
+Op de doel website\footnote{\url{https://www.oddsportal.com/football/belgium/jupiler-pro-league/}} zijn een aantal voetbal wedstrijden te zien. Naast iedere wedstrijd staan 3 kolommen zoals te zien in \ref{fig:website1}. De cijfers(betting odds voor de wedstrijden) die in deze kolommen staan, zijn de data die de scraper gaat proberen te extraheren.
 
 \begin{figure}[h]
     \centering
-    \includegraphics[width=\linewidth]{graphics/website1.png}
+    \includegraphics[width=\linewidth]{graphics/website2.png}
     \caption{De doel website}
     \label{fig:website1}
 \end{figure}
@@ -90,7 +90,7 @@ De antwoorden van deze overblijvende HTTP-verzoeken bevatten allemaal JSON-besta
 De HTML-code van de doel website is complex, hierdoor is de code moeilijk te lezen en kleine veranderingen in de code kunnen ervoor zorgen dat de locatie van de betting odds verandert. De website wordt dynamisch opgebouwd met behulp van HTTP-verzoeken die gestructureerde data opvragen. Dit zorgt ervoor dat web scraping met netwerkverkeersanalyse bij deze website de beste keuze is.
 \\
 \\
-In figuur~\ref{fig:networktab4} is te zien hoe de header van het HTTP-verzoek is opgebouwd. Indien de website een duidelijke en consistente structuur in de headers heeft, kan een Python-script worden ontwikkeld dat gebruik maakt van een lus om systematisch HTTP-requests te versturen. Deze aanpak maakt het mogelijk om alle benodigde data te verzamelen zonder de beperkingen van traditionele scraping-methoden die zich puur op de HTML-content richten.
+In figuur~\ref{fig:networktab4} is te zien hoe de header van het HTTP-verzoek is opgebouwd, hier kan men de HTTP-methode, de toegestane gegevensformaten en de user-agent herkennen zoals uitgelegd in sectie~\ref{sec:HTTP}. Indien de website een duidelijke en consistente structuur in de headers heeft, kan een Python-script worden ontwikkeld dat gebruik maakt van een lus om systematisch HTTP-requests te versturen. Deze aanpak maakt het mogelijk om alle benodigde data te verzamelen zonder de beperkingen van traditionele scraping-methoden die zich puur op de HTML-content richten.
 \begin{figure}[h]
     \centering
     \includegraphics[width=\linewidth]{graphics/headers.png}
@@ -171,6 +171,7 @@ In deze stap wordt een instantie van de \texttt{Options}-klasse aangemaakt en wo
 \end{lstlisting}
 
 In code-fragment~\ref{code:poc3} wordt de webdriver naar de opgegeven URL gestuurd. In dit geval is de URL een pagina van de Jupiler Pro League op OddsPortal. Het laden van de pagina genereert netwerkverkeer dat kan worden geanalyseerd en opgeslagen in de variabele \texttt{logs}. Tot slot wordt de webdriver afgesloten om alle resources vrij te geven.
+\\ \\
 
 \begin{lstlisting}[language=python, captionpos=b, caption={Ophalen van het netwerkverkeer}, label={code:poc3}]
     url = "https://www.oddsportal.com/football/belgium/jupiler-pro-league/"
@@ -190,8 +191,9 @@ Bij code-fragment~\ref{code:poc4} worden de \texttt{performance-logs} gefilterd 
         if any(keyword in networktraffic["method"] for keyword in filter_list):
             filtered_logs.append(networktraffic)
 \end{lstlisting}
-
-In onderstaande code-fragment~\ref{code:poc5}  worden de \texttt{filtered\_logs} doorlopen om alleen de URL's van de HTTP-verzoeken met type XHR te verzamelen in een lijst. Door te filteren op XHR-verzoeken richt de code zich uitsluitend op die verzoeken waarin doorgaans gestructureerde data, zoals JSON, wordt verzonden.
+Naast HTTP-verzoeken kunnen er ook andere soorten netwerkverkeer worden gevonden, zoals WebSocket-verkeer voor real-time communicatie, DNS-verzoeken voor het omzetten van domeinnamen naar IP-adressen, en de TLS-handshake voor het opzetten van een beveiligde HTTPS-verbinding. Dit soort netwerkverkeer is geen primaire methode voor het opbouwen van de website en zijn inhoud, dit betekent dat deze minder relevant zijn voor scrapen van de website.
+\\ \\
+In onderstaande code-fragment~\ref{code:poc5}  worden de \texttt{filtered\_logs} doorlopen om alleen de URL's van de HTTP-verzoeken met type XHR te verzamelen in een lijst. XHR (XMLHttpRequest) is een API die wordt gebruikt om HTTP-verzoeken naar een server te sturen zonder de huidige webpagina te herladen, desondanks wat deze naam impliceert, kan XHR gebruikt worden om alle data types op te halen. Door te filteren op XHR-verzoeken richt de code zich uitsluitend op die verzoeken waarin doorgaans gestructureerde data, zoals JSON, wordt verzonden.
 
 \begin{lstlisting}[language=python, captionpos=b, caption={De URL's uit de HTTP-verzoeken halen}, label={code:poc5},]
     urls = []
@@ -312,6 +314,17 @@ In het laatste codefragment~\ref{code:poc8} worden de gerangschikte URL's weerge
 \end{lstlisting}
 
 De zoekwoorden die in bovenstaand code-fragment~\ref{code:poc8} worden gebruikt, zijn gebaseerd op de manuele analyse van de website in sectie \ref{sec:analyse}.
+\\ \\
+Wanneer de inhoud van de URL, weergegeven in figuur~\ref{fig:resultaat}, wordt vergeleken met de odds zoals getoond op de website in figuur~\ref{fig:website1}, blijkt dat de odds op de website overeenkomen met de waarden in de variabele \texttt{''avgOdds"}. Na manueel het netwerk nogmaals te analyseren kan ook bevestigd worden dat de resulterende URL, de enige is in het netwerkverkeer die deze data bevat. Het Python-script is dus succesvol in het lokaliseren van de URL die de gestructureerde data bevat waarnaar wordt gezocht.
+\begin{figure}[h]
+    \centering
+    \includegraphics{graphics/res_json.png}
+    \caption{Inhoud van de resulterende URL}
+    \label{fig:resultaat}
+\end{figure}
+
+
+
 
 \section{resultaten}
 Het resultaat van deze Proof of Concept is een webscraper die door middel van netwerkverkeersanalyse op zoek gaat naar de gestructureerde data die op de website beschikbaar is. Dit Python-script automatiseert het proces door de URL's in de HTTP-verzoeken te identificeren die de website gebruikt om de benodigde gegevens op te halen. Hierdoor is het niet langer nodig om het netwerkverkeer handmatig te analyseren, wat zowel tijd bespaart als de nauwkeurigheid van de gegevensverzameling verbetert.

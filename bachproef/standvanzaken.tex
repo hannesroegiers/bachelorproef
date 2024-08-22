@@ -123,6 +123,29 @@ Bij netwerkverkeersanalyse worden tools zoals Wireshark of tcpdump gebruikt om n
     \label{fig:networksniffing}
 \end{figure}
 
+\subsubsection{HTTP-verzoeken}
+\label{sec:HTTP}
+Hypertext Transfer Protocol (HTTP) vormt de kern van de communicatie tussen websites en webservers. Elk interactieproces tussen een browser en een server verloopt via HTTP-verzoeken en -antwoorden. Voor web scraping zijn HTTP-verzoeken van cruciaal belang. Ze spelen een sleutelrol bij het verkrijgen van toegang tot de inhoud van webpagina's en API's (Application Programming Interfaces). In dit hoofdstuk bespreken we de structuur, het belang, en de toepassingen van HTTP-verzoeken binnen web scraping.
+\\
+Een HTTP-verzoek bestaat uit drie hoofdcomponenten~\autocite{Fielding1997}: de HTTP-methode, de headers, en de payload (of body).:
+\begin{enumerate}
+    \item \textbf{HTTP-methoden:} De meest gebruikte methoden binnen webscraping zijn:
+        \begin{itemize}
+            \item \textbf{GET:} Dit is de meest voorkomende methode en wordt gebruikt om gegevens van een server op te halen zonder gegevens te wijzigen. Bijvoorbeeld het opvragen van een webpagina.
+            \item \textbf{POST:} Deze methode wordt gebruikt om gegevens naar een server te verzenden. Bijvoorbeeld het invullen van een formulier of het versturen van een API-aanroep met specifieke parameters.
+            \item Andere methoden zoals PUT, DELETE, en PATCH zijn minder relevant voor web scraping.
+        \end{itemize}
+   \item \textbf{Headers: }De headers bevatten aanvullende informatie over het verzoek, zoals de gebruikte browser (User-Agent), de toegestane gegevensformaten (Accept), en de authenticatiegegevens (bijvoorbeeld API-sleutels). Voor web scrapers is het vaak noodzakelijk om de juiste headers te gebruiken om succesvolle verzoeken te garanderen, vooral als servers mechanismen implementeren om scraping te voorkomen.
+   \item \textbf{Payload: }Bij sommige HTTP-verzoeken, zoals POST-verzoeken, kan een payload worden meegestuurd. Dit bevat extra gegevens die naar de server worden verzonden, bijvoorbeeld formuliergegevens of JSON-objecten bij API-aanroepen.
+\end{enumerate}
+In afbeelding~\ref{fig:HTTP} is te zien hoe een browser communiceert met de webserver via HTTP-verzoeken.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\linewidth]{graphics/http.png}
+    \caption{Een visuele representatie van de werking van HTTP-verzoeken \autocite{Samuel2022}.}
+    \label{fig:HTTP}
+\end{figure}
 \subsubsection{Netwerkverkeersanalyse toepassen op web scraping}
 Bij het bezoeken van een website vindt er een complexe uitwisseling van data plaats tussen de browser van de gebruiker en de server. Deze uitwisseling, die bekend staat als netwerkverkeer, bestaat uit een reeks HTTP-requests en -responses.
 Elke HTTP-request wordt door de browser verstuurd en bevat een specifiek verzoek voor een bestand, zoals een JSON-bestand, XML-bestand, HTML-bestand, CSS-stylesheet, JavaScript-bestand of afbeelding. De server ontvangt dit request en genereert een HTTP-response die de gevraagde data bevat. Het proces kan als volgt worden gestructureerd:
@@ -254,7 +277,7 @@ Hoewel Beautiful Soup 4 een krachtige tool is voor webscraping, zijn er enkele b
     \item \textbf{Complexiteit van de website: } Websites met zeer complexe HTML-structuren, veel geneste elementen en aangepaste tags kunnen moeilijk te parsen zijn, vooral bij gebrek aan duidelijke structuren.
 \end{itemize}
 
-Bij het bouwen van een traditionele webscraper  in Python is Beautiful Soup 4 dus een must-have Python-bibliotheek. Het is echter wel belangerijk om de beperkingen van de Python-bibliotheek te begrijpen. In codefragment \ref{code:example3} worden de besproken functionaliteiten toegepast.
+Bij het bouwen van een traditionele webscraper  in Python is Beautiful Soup 4 dus een must-have Python-bibliotheek. Het is echter wel belangrijk om de beperkingen van de Python-bibliotheek te begrijpen. In codefragment \ref{code:example3} worden de besproken functionaliteiten toegepast.
 
 
 \begin{lstlisting}[language=python, captionpos=b, caption=Een voorbeeld van de kernfunctionaliteiten van Beautiful Soup 4, label={code:example3}]
@@ -333,7 +356,7 @@ Bij het bouwen van een traditionele webscraper  in Python is Beautiful Soup 4 du
 Selenium is een open-source framework voor het automatiseren van webapplicatietests. Het kan echter ook effectief worden gebruikt voor webscraping. Selenium ondersteunt meerdere programmeertalen, waaronder Python, Java, C#, en Ruby. De tool biedt een interface om browsers te besturen, waardoor gebruikers webpagina's kunnen laden, elementen kunnen identificeren en interacties kunnen uitvoeren, zoals klikken en formulierinvoer. De Selenium Python-bibliotheek heeft een aantal kernfunctionaliteiten \autocite{Muthukadan2011}:
 
 \begin{itemize}
-    \item \textbf{Multi-browser ondersteuning:} Selenium ondersteunt verschillende browsers, zoals Chrome, Firefox, Safari en Edge. voor ieder van deze browsers zijn er drivers beschikbaar. Deze drivers kunnen gebruikt worden zoals in codefragment \ref{code:example4}. Dit maakt het mogelijk om scraping-taken uit te voeren in een omgeving die lijkt op die van een echte gebruiker.
+    \item \textbf{Multi-browser ondersteuning:} Selenium ondersteunt verschillende browsers, zoals Chrome, Firefox, Safari en Edge. Voor ieder van deze browsers zijn er drivers beschikbaar. Deze drivers kunnen gebruikt worden zoals in codefragment \ref{code:example4}. Dit maakt het mogelijk om scraping-taken uit te voeren in een omgeving die lijkt op die van een echte gebruiker.
 
     \begin{lstlisting}[language=Python, caption={voorbeeld Selenium driver}, captionpos=b, label=code:example4]
         from selenium import webdriver
@@ -413,7 +436,8 @@ Webscraping, het proces waarbij geautomatiseerde scripts of programma's gegevens
 
 \subsection{Privacy}
 \subsubsection{Inbreuk op de privacy van gebruikers}
-Webscraping kan leiden tot het verzamelen van persoonlijke gegevens zonder expliciete toestemming van de gebruiker, vooral wanneer netwerkverkeersanalyse wordt toegepast. Dit kan ernstige privacy-inbreuken veroorzaken, waarbij gevoelige informatie zoals naam, adres en andere persoonlijke details zonder toestemming worden vastgelegd en mogelijk misbruikt.
+Webscraping kan leiden tot het verzamelen van persoonlijke gegevens zonder expliciete toestemming van de gebruiker, vooral wanneer netwerkverkeersanalyse wordt toegepast. Dit kan ernstige privacy-inbreuken veroorzaken, waarbij gevoelige informatie zoals naam, adres en andere persoonlijke details zonder toestemming worden vastgelegd en mogelijk misbruikt. Een concreet voorbeeld hiervan is het scrapen van sociale media zoals Facebook en Instagram, waar gebruikersprofielen en andere privégegevens op grote schaal kunnen worden verzameld zonder dat de gebruiker hiervan op de hoogte is of toestemming heeft gegeven.
+
 
 \subsubsection{Gegevensbeschermingswetgeving}
 Wetgevingen zoals de Algemene Verordening Gegevensbescherming (AVG) in de EU en de California Consumer Privacy Act (CCPA) in de VS stellen strikte eisen aan de verzameling en verwerking van persoonlijke gegevens. Deze wetgevingen zijn ook van toepassing op webscraping en vereisen dat organisaties transparant zijn over welke gegevens zij verzamelen, hoe deze worden gebruikt en dat zij toestemming van de gebruikers verkrijgen.
@@ -446,7 +470,7 @@ Het is cruciaal dat organisaties transparant zijn over hun webscraping-activitei
 Webscraping moet zo worden uitgevoerd dat de privacy van gebruikers minimaal wordt aangetast. Dit houdt in dat alleen de noodzakelijke gegevens worden verzameld en dat er maatregelen worden genomen om de impact op privacy te minimaliseren.
 
 \subsubsection{Ethische codes}
-Er zijn bestaande ethische codes voor onderzoekers en ontwikkelaars~\autocite{Don2018} die richtlijnen bieden voor verantwoord gebruik van webscraping. Deze codes benadrukken het belang van eerlijkheid, transparantie en respect voor privacy en intellectueel eigendom.
+Er zijn bestaande ethische codes voor onderzoekers en ontwikkelaars~\autocite{Don2018} die richtlijnen bieden voor verantwoord gebruik van webscraping. Deze codes benadrukken het belang van eerlijkheid, transparantie en respect voor privacy en intellectuele eigendom.
 \\
 \\
-De belangrijkste ethische uitdagingen van webscraping omvatten privacy-inbreuken, juridische kwesties in verband met intellectueel eigendom, het potentiële misbruik van gegevens en de impact op systeemprestaties. Het naleven van ethische richtlijnen en best practices is cruciaal om verantwoord webscraping te waarborgen.
+De belangrijkste ethische uitdagingen van webscraping omvatten privacy-inbreuken, juridische kwesties in verband met intellectuele eigendom, het potentiële misbruik van gegevens en de impact op systeemprestaties. Het naleven van ethische richtlijnen en best practices is cruciaal om verantwoord webscraping te waarborgen.
